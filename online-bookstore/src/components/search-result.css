@@ -1,0 +1,548 @@
+/*------HEADER------*/
+.header-wrapper{
+    height: 56px;
+    padding: 0;
+}
+
+.header-left-menu{
+    width: calc(100vw - 340px);
+    height: 56px;
+    display: inline-flex;
+}
+
+.header-searchbar-container{
+    width: calc(100vw - 150px - 504px - 170px - 14px - 8px);
+    height: 56px;
+    margin-right: 14px;
+}
+
+.header-searchbar{
+    width: 260px;
+    height: 32px;
+    float: right;
+    margin-top: 12px;
+    border-color: #65156C;
+}
+
+.header-login-signup-container{
+    width: 170px;
+    padding-right: 8px;
+    height: 56px;
+    display: inline-flex;
+}
+
+.button-primary-general{
+    background-color: #65156C;
+    color: white;
+    border-color: #65156C;
+}
+
+.button-primary-general:hover{
+    background-color: #f5f3f6;
+    border-color: #65156C;
+    color: #65156C;
+}
+
+#login-button{
+    font-weight: 500;
+    font-size: 12px;
+    height: 32px;
+    width: 90px;
+    border-radius: 6px;
+}
+
+.sign-up-text{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 54px;
+    margin: 0 0 0 14px;
+    padding: 0;
+    color: #65156C;
+}
+
+.sign-up-text:hover{
+    font-weight: 700;
+}
+
+.hover-expand-wrapper{
+    position: absolute;
+    z-index: 100;
+    width: calc(100vw - 40px);
+    height: 374px;
+    margin-left: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+}
+
+.hover-expand-menu-item{
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #A091B2;
+    line-height: 54px;
+    font-size: 12px;
+}
+
+.hover-expand-menu-item:hover{
+    color: #65156C;
+}
+
+.hover-expand-content-container{
+    display: inline-flex;
+}
+
+.hover-expand-left-box{
+    background-color: #ECF8FE;
+    width: 24vw;
+    height: 374px;
+    border-radius: 12px 0 0 12px;
+    display: block;
+    overflow: hidden;
+}
+
+.hover-expand-left-box-title{
+    font-family: "Songti SC";
+    font-size: 18px;
+    text-align: center;
+    color: #65156C;
+    margin-top: 20px;
+}
+
+.hover-expand-left-box-button{
+    margin-top: 18px;
+}
+
+.hover-expand-checknow-button{
+    margin-left: 32%;
+    font-weight: 400;
+    font-size: 12px;
+    height: 28px;
+    width: 36%;
+}
+
+.hover-expand-left-box-bookcover{
+    margin-top: 20px;
+    width: 76%;
+    margin-left: 12%;
+    height: auto;
+}
+
+.hover-expand-right-box{
+    width: calc(100vw - 40px - 24vw);
+    height: 374px;
+    border-radius: 0 12px 12px 0;
+    display: inline-flex;
+    background-color: white;
+}
+
+.hover-expand-right-box-col{
+    width: calc(25% - 54px);
+    height: 320px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 54px;
+}
+
+.hover-expand-right-box-title{
+    font-family: "Songti SC";
+    font-size: 17px;
+    color: #65156C;
+}
+
+.hover-expand-right-box-hint{
+    font-size: 12px;
+    color: #A091B2;
+    margin-top: 18px;
+}
+
+.hover-expand-right-box-item{
+    margin-top: 10px;
+    font-size: 13px;
+    color: #65156C;
+}
+
+.hover-expand-right-box-item:hover{
+    font-weight: 700;
+}
+
+.hover-expand-right-box-seemore{
+    margin-top: 22px;
+    color: #A091B2;
+    font-size: 12px;
+}
+
+.hover-expand-right-box-seemore:hover{
+    font-weight: 700;
+}
+
+
+.result-title{
+    height: 36px;
+    width: 100vw;
+    display: inline-flex;
+}
+
+.result-title-text{
+    margin-left: 36px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 36px;
+    color: #333333;
+}
+
+.result-title-num{
+    margin-left: 16px;
+    font-size: 12px;
+    color: #333333;
+    line-height: 42px;
+}
+
+.result-attribute-bar{
+    height: 32px;
+    width: 100vw;
+    display: inline-flex;
+}
+
+.result-attribute-text{
+    margin-left: 36px;
+    font-size: 12px;
+    color: #333333;
+    line-height: 32px;
+}
+
+.result-attribute-keyword{
+    font-size: 12px;
+    color: #65156C;
+    line-height: 32px;
+    font-weight: 500;
+}
+
+.content-container{
+    display: inline-flex;
+    width: 100vw;
+}
+
+.book-container{
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin-left: 36px;
+    margin-top: calc(-3vw + 6px);
+}
+
+.category-container{
+    width: calc(20vw - 38px - 18px);
+    border-radius: 8px;
+    margin-top: 6px;
+
+}
+
+.book-item-container{
+    display: block;
+    width: 13vw;
+    height: calc(146px + 13vw);
+    margin-right: 3vw;
+    margin-top: 3vw;
+}
+
+.book-item-cover-wrapper{
+    width: 13vw;
+    height: 13vw;
+    background-color: #FAFAFC;
+    border-radius: 12px;
+}
+
+.book-item-cover-pic{
+    height: 11vw;
+    margin-top: calc((100% - 11vw) / 2);
+    margin-left: calc((100% - 7.15vw) / 2);
+}
+
+.book-item-title{
+    margin-top: 8px;
+    font-size: 14px;
+    color: #65156C;
+    font-weight: 500;
+    line-height: 24px;
+    height: 48px;
+
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+}
+
+.book-item-info{
+    font-size: 12px;
+    color: #A091B2;
+    line-height: 24px;
+    margin-top: 8px;
+
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    height: 24px;
+}
+
+.book-rating-price{
+    display: inline-flex;
+    width: 13vw;
+    height: 24px;
+    margin-top: 2px;
+}
+
+.book-rating{
+    width: 50%;
+    display: inline-flex;
+    font-size: 12px;
+    color: #F4AE4B;
+    line-height: 24px;
+}
+
+.book-price{
+    width: 50%;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 500;
+    color: #65156C;
+    line-height: 24px;
+}
+
+.book-button-container{
+    height: 26px;
+    width: 13vw;
+    margin-top: 4px;
+    display: inline-flex;
+}
+
+.book-button-like{
+    width: 26%;
+}
+
+.book-button-addtocart{
+    width: 70%;
+    margin-left: 4%;
+}
+
+.book-button-style{
+    background-color: white;
+    border: solid 1px #65156C;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    color: #65156C;
+    font-size: 12px;
+}
+
+.book-button-style:hover{
+    background-color: #65156C;
+    color: white;
+}
+
+::v-deep .el-input{
+    border-color: #65156C;
+}
+
+::v-deep .el-input .el-input__wrapper{
+    border-radius: 20px;
+}
+
+::v-deep .el-input .el-input__inner{
+    font-weight: 400;
+    font-size: 12px;
+    color: #65156C;
+}
+
+::v-deep .el-input {
+    --el-input-border-color: #65156C;
+    --el-input-hover-border-color: #A091B2;
+    --el-input-focus-border-color: #65156C;
+}
+
+::v-deep .el-collapse.collapse-wrapper{
+    border: solid 1px #A091B2;
+    padding-bottom: 1px;
+    border-radius: 8px;
+}
+
+::v-deep .el-collapse-item__header{
+    color: #65156C;
+    background-color: white;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 18px;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+#first-item ::v-deep .el-collapse-item__header{
+    border-radius: 7px 7px 0 0 !important;
+}
+
+#last-item ::v-deep .el-collapse-item__header{
+    border-radius: 0 0 7px 7px;
+}
+
+#last-item ::v-deep .el-collapse-item__wrap{
+    border-radius: 0 0 7px 7px;
+}
+
+#price-control-panel ::v-deep .el-collapse-item__content{
+    display: inline-flex;
+}
+
+::v-deep .el-collapse-item__content{
+    padding-bottom: 6px;
+    padding-left: 18px;
+}
+
+
+::v-deep .el-checkbox__label{
+    font-size: 12px;
+    font-weight: 400;
+    color: #333333;
+}
+
+::v-deep .el-checkbox{
+    height: 24px;
+    --el-checkbox-checked-text-color: #65156C;
+    --el-checkbox-checked-bg-color: #65156C;
+    --el-checkbox-input-border-color-hover: #65156C;
+    --el-checkbox-checked-input-border-color: #65156C;
+    --el-checkbox-input-border: solid 1px #A091B2;
+}
+
+.language-checkbox{
+    width: calc(20vw - 38px - 18px);
+}
+
+.price-control{
+    width: 5.5vw;
+    height: 25px;
+    margin-bottom: 6px;
+}
+
+.price-control ::v-deep .el-input .el-input__wrapper{
+    border-radius: 5px;
+    padding: 1px 26px 1px 5px;
+}
+
+.price-control ::v-deep .el-input .el-input__inner{
+    color: #A091B2;
+}
+
+.price-control ::v-deep .el-input-number__decrease{
+    width: 20px;
+}
+
+.price-control ::v-deep .el-input-number__increase{
+    width: 20px;
+}
+
+.rate-collapse-text{
+    font-size: 12px;
+    line-height: 26px;
+    color: #333333;
+    margin-left: 4px;
+}
+
+::v-deep .el-rate{
+    height: 24px;
+}
+
+::v-deep .el-rate__item{
+    width: 18px;
+}
+
+::v-deep .el-tree-node__label{
+    font-size: 12px;
+    color: #333333;
+    line-height: 24px;
+}
+
+::v-deep .el-tree-node__content{
+    height: 24px;
+    margin-left: -14px;
+}
+
+@media screen and (max-width: 950px){
+    .header-searchbar-container{
+        width: 105px;
+        height: 56px;
+        margin-right: 14px;
+    }
+
+    .hover-expand-wrapper{
+        width: 950px;
+    }
+
+    .hover-expand-left-box{
+        width: 228px;
+    }
+
+    .hover-expand-right-box{
+        width: 682px;
+    }
+
+    .collection-banner{
+        width: 950px;
+    }
+
+    .header-left-menu{
+        width: 610px;
+    }
+
+}
+
+@media screen and (max-width: 1100px){
+    .book-container{
+        width: 880px;
+        margin-top: -27px;
+    }
+
+    .book-item-container{
+        width: 143px;
+        height: calc(146px + 143px);
+        margin-right: 33px;
+        margin-top: 33px;
+    }
+
+    .book-item-cover-wrapper{
+        width: 143px;
+        height: 143px;
+    }
+
+    .book-rating-price{
+        width: 143px;
+    }
+
+    .book-button-container{
+        width: 143px;
+    }
+
+    .book-item-cover-pic{
+        height: 121px;
+        margin-top: calc((100% - 121px) / 2);
+        margin-left: calc((100% - 78.65px) / 2);
+    }
+
+    .content-container{
+        width: 1100px;
+    }
+
+    .category-container{
+        width: 164px;
+    }
+
+    .language-checkbox{
+        width: 164px;
+    }
+
+    .price-control{
+        width: 60.5px;
+    }
+
+}
+

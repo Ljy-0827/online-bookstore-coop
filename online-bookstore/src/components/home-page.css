@@ -1,0 +1,779 @@
+.header-wrapper{
+    height: 56px;
+    padding: 0;
+}
+
+.header-searchbar-container{
+    width: calc(100vw - 150px - 504px - 170px - 14px - 8px);
+    height: 56px;
+    margin-right: 14px;
+}
+
+.header-searchbar{
+    width: 260px; height: 32px; float: right; margin-top: 12px; border-color: #65156C;
+}
+
+.header-left-menu{
+    width: calc(100vw - 340px);
+    height: 56px;
+    display: inline-flex;
+}
+
+.header-login-signup-container{
+    width: 170px;
+    padding-right: 8px;
+    height: 56px;
+    display: inline-flex;
+    justify-content: right;
+}
+
+.button-primary-general{
+    background-color: #65156C;
+    color: white;
+    border-color: #65156C;
+}
+
+.button-primary-general:hover{
+    background-color: #f5f3f6;
+    border-color: #65156C;
+    color: #65156C;
+}
+
+#login-button{
+    font-weight: 500;
+    font-size: 12px;
+    height: 32px;
+    width: 90px;
+    border-radius: 6px;
+}
+
+.sign-up-text{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 54px;
+    margin: 0 0 0 14px;
+    padding: 0;
+    color: #65156C;
+}
+
+.sign-up-text:hover{
+    font-weight: 700;
+}
+
+.hover-expand-wrapper{
+    position: absolute;
+    z-index: 100;
+    width: calc(100vw - 40px);
+    height: 374px;
+    margin-left: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+}
+
+.hover-expand-menu-item{
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #A091B2;
+    line-height: 54px;
+    font-size: 12px;
+}
+
+.hover-expand-menu-item:hover{
+    color: #65156C;
+}
+
+.hover-expand-content-container{
+    display: inline-flex;
+}
+
+.hover-expand-left-box{
+    background-color: #ECF8FE;
+    width: 24vw;
+    height: 374px;
+    border-radius: 12px 0 0 12px;
+    display: block;
+    overflow: hidden;
+}
+
+.hover-expand-left-box-title{
+    font-family: "Songti SC";
+    font-size: 18px;
+    text-align: center;
+    color: #65156C;
+    margin-top: 20px;
+}
+
+.hover-expand-left-box-button{
+    margin-top: 18px;
+}
+
+.hover-expand-checknow-button{
+    margin-left: 32%;
+    font-weight: 400;
+    font-size: 12px;
+    height: 28px;
+    width: 36%;
+}
+
+.hover-expand-left-box-bookcover{
+    margin-top: 20px;
+    background-color: lightyellow;
+    width: 76%;
+    margin-left: 12%;
+    height: auto;
+}
+
+.hover-expand-right-box{
+    width: calc(100vw - 40px - 24vw);
+    height: 374px;
+    border-radius: 0 12px 12px 0;
+    display: inline-flex;
+    background-color: white;
+}
+
+.hover-expand-right-box-col{
+    width: calc(25% - 54px);
+    height: 320px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 54px;
+}
+
+.hover-expand-right-box-title{
+    font-family: "Songti SC";
+    font-size: 17px;
+    color: #65156C;
+}
+
+.hover-expand-right-box-hint{
+    font-size: 12px;
+    color: #A091B2;
+    margin-top: 18px;
+}
+
+.hover-expand-right-box-item{
+    margin-top: 10px;
+    font-size: 13px;
+    color: #65156C;
+}
+
+.hover-expand-right-box-item:hover{
+    font-weight: 700;
+}
+
+.hover-expand-right-box-seemore{
+    margin-top: 22px;
+    color: #A091B2;
+    font-size: 12px;
+}
+
+.hover-expand-right-box-seemore:hover{
+    font-weight: 700;
+}
+
+.collection-banner{
+    width: calc(100vw - 40px);
+    margin-left: 20px;
+    border-radius: 12px;
+}
+
+.backward-wrapper{
+    width: calc(100vw - 40px);
+    margin-left: 20px;
+    margin-top: 4px;
+    display: inline-flex;
+}
+
+.count-text{
+    color: #65156C;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 34px;
+    margin-left: 18px;
+}
+
+.icon-button{
+    height: 34px;
+    width: 34px;
+}
+
+.first-sight-wrapper{
+    height: 57vw;
+    background-image: linear-gradient(transparent, #fcebed);
+    width: 100vw;
+    overflow: hidden;
+}
+
+.first-sight-title{
+    font-family: "Songti SC";
+    font-size: 2.375rem;
+    text-align: center;
+    width: 100vw;
+    color: #65156C;
+    margin-top: 60px;
+}
+
+.first-sight-search-box{
+    margin-top: 46px;
+    width: 46%;
+    margin-left: 27%;
+    position: absolute;
+    z-index: 20;
+}
+
+.background-pic-wrapper{
+    margin-top: 30px;
+}
+
+.first-sight-pic{
+    width: 94%;
+    margin-left: 3%;
+    margin-top: 40px;
+}
+
+.book-note-container{
+    width: 100vw;
+}
+
+.book-notes-row{
+    width: calc(100vw - 60px);
+    margin-left: 30px;
+    display: inline-flex;
+}
+
+.book-note{
+    width: 50%;
+    display: inline-flex;
+}
+
+.book-note-cover-wrapper{
+    margin-top: 50px;
+    margin-left: 60px;
+    width: 10vw;
+}
+
+.book-note-cover{
+    width: 10vw;
+    border-radius: 12px;
+}
+
+.book-note-text{
+    display: block;
+}
+
+.book-note-text-sign1{
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+.book-note-text-sign2{
+    margin-right: 5vw;
+    float: right;
+    height: auto;
+}
+
+.sign1{
+    height: 2vw;
+}
+
+.sign2{
+    height: 2vw;
+}
+
+.book-note-text-content{
+    font-family: "Songti SC";
+    color: #333333;
+    margin-left: 74px;
+    margin-right: calc(30px + 5vw);
+    line-height: 26px;
+    font-size: 0.875rem;
+    max-height: 15vw;
+}
+
+.book-note-text-content p{
+    margin: -4px;
+    overflow: hidden;
+    -webkit-line-clamp:4;
+    display: -webkit-box;
+    -webkit-box-orient:vertical;
+    text-overflow: ellipsis;
+}
+
+.book-note-carousel-wrapper{
+    height: 23vw;
+    overflow: hidden;
+}
+
+.el-carousel .el-carousel__item .book-note-carousel-item{
+    height: 23vw;
+    overflow: hidden;
+}
+
+/*
+.book-note-text-content p:first-letter{
+    margin-left: 30px;
+}
+ */
+
+.book-note-mix{
+    margin-top: 1vw;
+    float: right;
+    display: inline-flex;
+    margin-left: 74px;
+    margin-right: calc(30px + 5vw);
+    width: calc(100% - 5vw - 64px);
+}
+
+.book-note-info{
+    color: #65156C;
+    font-size: 12px;
+    float: right;
+    width: calc(100% - 68px);
+    max-height: 18px;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.book-note-info p{
+    margin: 0;
+    text-align: right;
+}
+
+.book-note-seemore{
+    margin-left: 10px;
+    color: #A091B2;
+    font-size: 12px;
+    width: 68px;
+    float: right;
+    text-align: right;
+}
+
+.book-note-seemore:hover{
+    font-weight: 700;
+}
+
+.category-button-group-wrapper{
+    background-color: #f5f3f6;
+    border-radius: 8px;
+    height: 52px;
+    width: calc(100vw - 120px);
+    margin-left: 60px;
+    margin-top: 10px;
+    display: inline-flex;
+}
+
+.category-button-group-title{
+    color: #65156C;
+    font-family: "Songti SC";
+    font-weight: 700;
+    font-size: 15px;
+    margin-left: 24px;
+    line-height: 52px;
+    width: 94px;
+}
+
+.category-button-group{
+    margin-left: 32px;
+    display: inline-flex;
+    width: calc(100vw - 120px - 36px - 94px - 157px);
+    overflow: hidden;
+}
+
+.category-button{
+    color: #65156C;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    text-decoration:underline;
+    line-height: 52px;
+}
+
+.category-button-seeall{
+    font-weight: 400;
+    width: 116px;
+    height: 34px;
+    margin-top: 9px;
+    margin-right: 9px;
+    margin-left: 28px;
+}
+
+
+
+/*
+
+.monthly-book-section-title{
+    font-family: "Songti SC";
+    font-size: 18px;
+    font-weight: 700;
+    color: #65156C;
+    margin-left: 60px;
+    margin-top: 20px;
+    width: calc(100vw - 60px);
+}
+
+.monthly-book-carousel-item{
+    width: 100vw;
+    background-color: lavenderblush;
+    height: auto;
+    padding-left: 94px;
+    padding-right: 94px;
+}
+
+.monthly-book-card{
+    width: 10vw;
+    background-color: lavender;
+    height: auto;
+    padding: 0;
+}
+
+.monthly-book-card-coverimg{
+    width: 100%;
+    border-radius: 12px;
+}
+
+.monthly-book-card-booktitle{
+    width: 100%;
+    text-align: center;
+    color: #65156C;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.monthly-book-card-bookauthor{
+    width: 100%;
+    text-align: center;
+    color: #A091B2;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+.monthly-book-card-seemore{
+    width: 100%;
+    height: 34px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+ */
+
+
+.monthly-book-section-title{
+    font-family: "Songti SC";
+    font-size: 18px;
+    font-weight: 700;
+    color: #65156C;
+    margin-left: 60px;
+    margin-top: 20px;
+    margin-bottom: 18px;
+    width: calc(100vw - 60px);
+}
+
+.monthly-book-carousel-item{
+    display: inline-flex;
+    height: auto;
+    justify-content: space-evenly;
+}
+
+.monthly-book-card {
+    width: 12vw;
+    height: auto;
+    display: block;
+}
+
+.monthly-book-card-bookcover{
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 12px;
+}
+
+.monthly-book-card-booktitle{
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: #65156C;
+    margin-top: 6px;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.monthly-book-card-bookauthor{
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    color: #A091B2;
+    margin-top: 6px;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.monthly-book-card-bookrate{
+    margin-top: 8px;
+    width: 118px;
+    margin-left: calc((100% - 118px) / 2);
+}
+
+.more-button-group-wrapper{
+    width: calc(100vw - 60px);
+    margin-left: 30px;
+    height: 52px;
+    display: inline-flex;
+    justify-content: space-evenly;
+    margin-bottom: 40px;
+}
+
+.more-button-buttons{
+    width: 12vw;
+    height: 52px;
+    border-radius: 8px;
+    background-color: #f5f3f6;
+}
+
+
+.more-button-buttonmix{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    padding: 0;
+    justify-content: center;
+    display: inline-flex;
+    background-color: #f5f3f6;
+    border: none;
+}
+
+.more-button-buttonmix:hover{
+    background-color: #f5f3f6;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+}
+
+.more-button-buttonmix:active{
+    background-color: #f5f3f6;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+}
+
+.more-button-buttonmix:focus{
+    background-color: #f5f3f6;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+}
+
+.more-button-iconwrapper{
+    width: 40px;
+    height: 40px;
+    margin-left: 9px;
+    background-color: #65156C;
+    border-radius: 4px;
+    color: white;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.more-button-textwrapper{
+    color: #65156C;
+    font-size: 14px;
+    font-weight: 500;
+    width: calc(12vw - 49px);
+    height: 52px;
+    line-height: 52px;
+}
+
+.el-rate .el-rate__text{
+    color: #F4AE4B;
+    font-size: 12px;
+}
+
+
+.el-input{
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
+    height: 60px;
+    --el-input-border-color: none;
+    --el-input-hover-border-color: #A091B2;
+    --el-input-focus-border-color: #65156C;
+}
+
+.el-input .el-input__wrapper{
+    border-radius: 10px;
+    padding: 1px 24px;
+}
+
+.el-input .el-input__inner{
+    font-weight: 400;
+    font-size: 14px;
+    color: #65156C;
+}
+
+.el-input .el-input__inner::placeholder{
+    color: #A091B2;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+@media screen and (min-width: 1280px) {
+    .book-note-text-content p{
+        -webkit-line-clamp: 5;
+    }
+}
+
+
+@media screen and (max-width: 1000px){
+    .monthly-book-card-bookrate{
+        display: none;
+    }
+
+    .more-button-iconwrapper{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1170px) and (max-width: 1280px){
+    .book-note-text-content p{
+        -webkit-line-clamp: 4;
+    }
+}
+
+@media screen and (max-width: 1170px){
+    .book-note-text-content p{
+        -webkit-line-clamp: 3;
+    }
+}
+
+@media screen and (max-width: 950px){
+    .first-sight-wrapper{
+        height: 542px;
+    }
+    .first-sight-pic{
+        width: 893px;
+    }
+
+    .first-sight-title{
+        width: 950px;
+        font-size: 28px;
+    }
+
+    .first-sight-search-box{
+        width: 437px;
+        margin-left: 256px;
+    }
+
+    .book-notes-row{
+        width: 950px;
+    }
+
+    .book-note-cover-wrapper{
+        width: 104px;
+    }
+
+    .book-note-cover{
+        width: 95px;
+    }
+
+    .sign1{
+        height: 19px;
+    }
+
+    .sign2{
+        height: 19px;
+    }
+
+    .book-note-text-content{
+        line-height: 26px;
+    }
+
+    .book-note-text-content p{
+        -webkit-line-clamp: 3;
+        width: 146px;
+    }
+    .book-note-text-sign2{
+        margin-right: 48px;
+    }
+
+    .book-note-text{
+        width: 290px;
+        margin-left: -10px;
+    }
+    .book-note-mix{
+        width: 179px;
+    }
+
+    .book-note-seemore p{
+        width: 105px;
+    }
+
+    .book-note-right{
+        margin-left: -30px;
+    }
+
+    .book-note-carousel-wrapper{
+        height: 218px;
+    }
+
+    .category-button-group-wrapper{
+        width: 830px;
+    }
+
+    .category-button-group{
+        width: 528px;
+    }
+
+    .category-button{
+        padding-left: 11px;
+        padding-right: 11px;
+        font-size: 12px;
+    }
+
+    .el-carousel .el-carousel__item .book-note-carousel-item{
+        height: 218px;
+    }
+
+    .monthly-book-section-title{
+        width: calc(950px - 60px);
+    }
+
+    .monthly-book-carousel{
+        width: 950px;
+    }
+
+    .monthly-book-carousel-wrapper{
+        height: 242px;
+    }
+
+    .monthly-book-carousel-item{
+        width: 950px;
+    }
+
+    .monthly-book-card {
+        width: 114px;
+        height: auto;
+        display: block;
+    }
+
+    .more-button-group-wrapper {
+        width: 890px;
+    }
+
+    .more-button-buttons{
+        width: 114px;
+    }
+
+    .more-button-textwrapper{
+        width: 65px;
+    }
+
+    .header-left-menu{
+        width: 610px;
+    }
+}
