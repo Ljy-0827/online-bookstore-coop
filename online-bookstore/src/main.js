@@ -13,6 +13,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import SearchResult from "@/components/SearchResult.vue";
 import HomePage from "@/components/HomePage.vue";
 import UserCart from "@/components/UserCart.vue";
+import UserAccount from "@/components/UserAccount.vue";
+import UserOrder from "@/components/UserOrder.vue";
 
 const myRouter = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,7 +37,18 @@ const myRouter = createRouter({
             path: '/cart',
             name: 'cart',
             component: UserCart
-        }
+        },
+        {
+            path: '/account',
+            name: 'account',
+            component: UserAccount,
+            children: [        {
+                path: 'order',
+                name: 'order',
+                component: UserOrder
+            }]
+        },
+
     ]
 })
 

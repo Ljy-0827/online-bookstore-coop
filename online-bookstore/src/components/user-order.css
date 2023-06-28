@@ -1,0 +1,548 @@
+/*------HEADER------*/
+.header-wrapper{
+    height: 56px;
+    padding: 0;
+}
+
+.header-left-menu{
+    width: calc(100vw - 340px - 6vw - 20px);
+    height: 56px;
+    display: inline-flex;
+}
+
+.header-searchbar-container{
+    width: 6vw;
+    height: 56px;
+    margin-right: 20px;
+}
+
+.header-searchbar{
+    width: 260px;
+    height: 32px;
+    float: right;
+    margin-top: 12px;
+    border-color: #65156C;
+}
+
+.header-login-signup-container{
+    width: 170px;
+    padding-right: 8px;
+    height: 56px;
+    display: inline-flex;
+}
+
+.button-primary-general{
+    background-color: #65156C;
+    color: white;
+    border-color: #65156C;
+}
+
+.button-primary-general:hover{
+    background-color: #f5f3f6;
+    border-color: #65156C;
+    color: #65156C;
+}
+
+#login-button{
+    font-weight: 500;
+    font-size: 12px;
+    height: 32px;
+    width: 90px;
+    border-radius: 6px;
+}
+
+.sign-up-text{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 54px;
+    margin: 0 0 0 14px;
+    padding: 0;
+    color: #65156C;
+}
+
+.sign-up-text:hover{
+    font-weight: 700;
+}
+
+.hover-expand-wrapper{
+    position: absolute;
+    z-index: 100;
+    width: calc(100vw - 40px);
+    height: 374px;
+    margin-left: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+}
+
+.hover-expand-menu-item{
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #A091B2;
+    line-height: 54px;
+    font-size: 12px;
+}
+
+.hover-expand-menu-item:hover{
+    color: #65156C;
+}
+
+.hover-expand-content-container{
+    display: inline-flex;
+}
+
+.hover-expand-left-box{
+    background-color: #ECF8FE;
+    width: 24vw;
+    height: 374px;
+    border-radius: 12px 0 0 12px;
+    display: block;
+    overflow: hidden;
+}
+
+.hover-expand-left-box-title{
+    font-family: "Songti SC";
+    font-size: 18px;
+    text-align: center;
+    color: #65156C;
+    margin-top: 20px;
+}
+
+.hover-expand-left-box-button{
+    margin-top: 18px;
+}
+
+.hover-expand-checknow-button{
+    margin-left: 32%;
+    font-weight: 400;
+    font-size: 12px;
+    height: 28px;
+    width: 36%;
+}
+
+.hover-expand-left-box-bookcover{
+    margin-top: 20px;
+    width: 76%;
+    margin-left: 12%;
+    height: auto;
+}
+
+.hover-expand-right-box{
+    width: calc(100vw - 40px - 24vw);
+    height: 374px;
+    border-radius: 0 12px 12px 0;
+    display: inline-flex;
+    background-color: white;
+}
+
+.hover-expand-right-box-col{
+    width: calc(25% - 54px);
+    height: 320px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 54px;
+}
+
+.hover-expand-right-box-title{
+    font-family: "Songti SC";
+    font-size: 17px;
+    color: #65156C;
+}
+
+.hover-expand-right-box-hint{
+    font-size: 12px;
+    color: #A091B2;
+    margin-top: 18px;
+}
+
+.hover-expand-right-box-item{
+    margin-top: 10px;
+    font-size: 13px;
+    color: #65156C;
+}
+
+.hover-expand-right-box-item:hover{
+    font-weight: 700;
+}
+
+.hover-expand-right-box-seemore{
+    margin-top: 22px;
+    color: #A091B2;
+    font-size: 12px;
+}
+
+.hover-expand-right-box-seemore:hover{
+    font-weight: 700;
+}
+
+.main-left{
+    width: 18vw;
+    height: 352px;
+    display: block;
+}
+
+.main-right{
+    width: 79vw;
+    margin-left: 3vw;
+    display: block;
+}
+
+.left-menu-wrapper{
+    border: solid 1px #E1DEE7;
+    border-radius: 6px;
+}
+
+.logout-button{
+    width: 100%;
+    height: 46px;
+    border: solid 1px #E1DEE7;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 13px;
+    font-weight: 500;
+    color: #65156C;
+    text-align: left;
+    padding-left: 20px;
+    margin-top: 16px;
+}
+
+.panel-title{
+    font-size: 18px;
+    color: #333333;
+    line-height: 30px;
+    margin-bottom: 16px;
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+.order-canvas{
+    min-height: calc(100vh - 148px);
+    display: block;
+    width: calc(100% - 36px);
+    margin-top: 2vw;
+}
+
+::v-deep .el-menu-item{
+    height: 46px;
+    border-bottom: solid 1px #E1DEE7;
+    color: #65156C;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+#first-menu-item ::v-deep .el-menu-item{
+    border-radius: 5px 5px 0 0;
+}
+
+#last-menu-item ::v-deep .el-menu-item{
+    border-radius: 0 0 5px 5px;
+    border-bottom: none;
+}
+
+::v-deep .el-input{
+    border-color: #65156C;
+}
+
+::v-deep .el-input .el-input__wrapper{
+    border-radius: 20px;
+}
+
+::v-deep .el-input .el-input__inner{
+    font-weight: 400;
+    font-size: 12px;
+    color: #65156C;
+}
+
+::v-deep .el-input {
+    --el-input-border-color: #65156C;
+    --el-input-hover-border-color: #A091B2;
+    --el-input-focus-border-color: #65156C;
+}
+
+::v-deep .el-radio-button {
+    --el-radio-button-checked-bg-color: white;
+    --el-radio-button-checked-text-color: #65156C;
+    --el-radio-button-checked-border-color: #65156C;
+}
+
+::v-deep .el-radio-button__inner:hover{
+    color: #65156C;
+}
+
+::v-deep .el-radio-button__inner{
+    height: 34px;
+    font-size: 12px;
+    color: #A091B2;
+    font-weight: 400;
+    line-height: 34px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+::v-deep .el-radio-button:first-child .el-radio-button__inner{
+    border-radius: 8px 0 0 8px;
+}
+
+::v-deep .el-radio-button:last-child .el-radio-button__inner{
+    border-radius: 0 8px 8px 0;
+}
+
+::v-deep .el-radio-button .is-active{
+    color: #65156C;
+    background-color: white;
+    border-color: #65156C;
+}
+
+::v-deep .el-radio-button__original-radio:checked+.el-radio-button__inner{
+    color: #65156C;
+    background-color: white;
+    border-color: #65156C;
+}
+
+.simple-order-container{
+    width: 100%;
+    border: solid 1px #E1DEE7;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 3vw;
+}
+
+.simple-order-top-box{
+    height: 84px;
+    background-color: #FAFAFC;
+    border-bottom: solid 1px #E1DEE7;
+    border-top: solid 1px #FAFAFC;
+    border-radius: 7px 7px 0 0;
+    display: inline-flex;
+    width: 100%;
+}
+
+.simple-order-top-box-left{
+    width: calc(100% - 162px - 3vw);
+    display: inline-flex;
+}
+
+.simple-order-info-item-wrapper{
+    display: block;
+    margin-left: 3vw;
+}
+
+.simple-order-info-item-name{
+    color: #A091B2;
+    font-size: 12px;
+    margin-top: 18px;
+}
+
+.simple-order-info-item-info{
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.simple-order-info-item-info-status{
+    color: #65156C;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.simple-order-info-function-wrapper{
+    display: block;
+    width: 162px;
+}
+
+.simple-order-info-id{
+    color: #333333;
+    font-size: 12px;
+    margin-top: 18px;
+    text-align: right;
+}
+
+.simple-order-links{
+    display: inline-flex;
+    margin-top: 8px;
+}
+
+.simple-order-link-button{
+    background-color: transparent;
+    border: none;
+    height: 24px;
+    font-size: 12px;
+    color: #65156C;
+    font-weight: 450;
+    text-decoration: underline;
+}
+
+.simple-order-bottom-box{
+    background-color: white;
+    border-radius: 0 0 7px 7px;
+    padding-bottom: 1.5vw;
+}
+
+.simple-order-book-wrapper{
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: calc((79vw - 36px) / 2 - 4vw);
+    margin-left: 2.5vw;
+    height: 10vw;
+    margin-top: 1.5vw;
+}
+
+.simple-order-book-cover-wrapper{
+    background-color: #FAFAFC;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 6px;
+}
+
+.simple-order-book-cover{
+    height: 8vw;
+    margin-top: 1vw;
+    margin-left: calc((100% - 5.2vw) / 2);
+}
+
+.simple-order-book-info-left{
+    display: block;
+    margin-left: 12px;
+    width: calc(100% - 10vw - 12px - 56px);
+}
+
+.simple-order-book-title{
+    font-size: 14px;
+    font-weight: 500;
+    color: #65156C;
+    line-height: 20px;
+    height: 40px;
+}
+
+.simple-order-book-author{
+    font-size: 12px;
+    color: #333333;
+    margin-top: calc(10vw - 97px);
+    line-height: 12px;
+    height: 12px;
+}
+
+.simple-order-book-publisher{
+    font-size: 12px;
+    color: #333333;
+    margin-top: 8px;
+    line-height: 12px;
+    height: 12px;
+}
+
+.simple-order-book-single-price{
+    font-size: 13px;
+    color: #333333;
+    font-weight: 450;
+    line-height: 13px;
+    height: 13px;
+    margin-top: 12px;
+    margin-left: -1px;
+}
+
+.simple-order-book-info-right{
+    display: block;
+    width: 56px;
+}
+
+.simple-order-book-num{
+    text-align: right;
+    font-size: 12px;
+    line-height: 12px;
+    height: 12px;
+    color: #333333;
+    margin-top: calc(10vw - 33px);
+}
+
+.simple-order-book-total-price{
+    text-align: right;
+    font-size: 13px;
+    font-weight: 450;
+    line-height: 13px;
+    height: 13px;
+    margin-top: 8px;
+    color: #333333;
+}
+
+
+@media screen and (max-width: 1100px){
+    .hover-expand-right-box{
+        width: 796px;
+    }
+
+    .hover-expand-left-box{
+        width: 264px;
+    }
+
+    .hover-expand-wrapper{
+        width: 1100px;
+    }
+
+    .header-left-menu{
+        width: 674px;
+    }
+
+    .header-searchbar-container{
+        width: 66px;
+    }
+
+    .main-left{
+        width: 198px;
+    }
+
+    .main-right{
+        width: 869px;
+        margin-left: 33px;
+    }
+
+    .order-canvas{
+        display: block;
+        width: calc(100% - 36px);
+        margin-top: 22px;
+    }
+
+    .simple-order-info-item-wrapper{
+        display: block;
+        margin-left: 33px;
+    }
+
+    .simple-order-top-box-left{
+        width: calc(100% - 162px - 33px);
+    }
+
+    .simple-order-book-wrapper{
+        width: calc((869px - 36px) / 2 - 44px);
+        margin-top: 16.5px;
+        height: 110px;
+    }
+
+    .simple-order-book-cover{
+        height: 88px;
+        margin-top: 11px;
+        margin-left: calc((100% - 57.2px) / 2);
+    }
+
+    .simple-order-book-author{
+        margin-top: 13px;
+    }
+
+    .simple-order-book-num{
+        margin-top: calc(110px - 33px);
+    }
+
+    .simple-order-book-info-left{
+        display: block;
+        margin-left: 12px;
+        width: calc(100% - 110px - 12px - 56px);
+    }
+
+    .simple-order-bottom-box{
+        padding-bottom: 16.5px;
+    }
+
+    .simple-order-container{
+        margin-bottom: 33px;
+    }
+}
+
