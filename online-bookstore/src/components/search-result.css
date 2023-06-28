@@ -5,15 +5,15 @@
 }
 
 .header-left-menu{
-    width: calc(100vw - 340px);
+    width: calc(100vw - 340px - 6vw - 20px);
     height: 56px;
     display: inline-flex;
 }
 
 .header-searchbar-container{
-    width: calc(100vw - 150px - 504px - 170px - 14px - 8px);
+    width: 6vw;
     height: 56px;
-    margin-right: 14px;
+    margin-right: 20px;
 }
 
 .header-searchbar{
@@ -467,36 +467,28 @@
     margin-left: -14px;
 }
 
-@media screen and (max-width: 950px){
-    .header-searchbar-container{
-        width: 105px;
-        height: 56px;
-        margin-right: 14px;
-    }
 
-    .hover-expand-wrapper{
-        width: 950px;
+@media screen and (max-width: 1100px){
+    .hover-expand-right-box{
+        width: 796px;
     }
 
     .hover-expand-left-box{
-        width: 228px;
+        width: 264px;
     }
 
-    .hover-expand-right-box{
-        width: 682px;
-    }
-
-    .collection-banner{
-        width: 950px;
+    .hover-expand-wrapper{
+        width: 1100px;
     }
 
     .header-left-menu{
-        width: 610px;
+        width: 674px;
     }
 
-}
+    .header-searchbar-container{
+        width: 66px;
+    }
 
-@media screen and (max-width: 1100px){
     .book-container{
         width: 880px;
         margin-top: -27px;

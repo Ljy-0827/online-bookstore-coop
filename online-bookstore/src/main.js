@@ -12,6 +12,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 import SearchResult from "@/components/SearchResult.vue";
 import HomePage from "@/components/HomePage.vue";
+import UserCart from "@/components/UserCart.vue";
 
 const myRouter = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,6 +30,11 @@ const myRouter = createRouter({
             // which is lazy-loaded when the route is visited.
             //component: () => import('./views/AboutView.vue')
             component: SearchResult
+        },
+        {
+            path: '/cart',
+            name: 'cart',
+            component: UserCart
         }
     ]
 })

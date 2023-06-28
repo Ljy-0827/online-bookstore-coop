@@ -180,269 +180,273 @@
     </el-affix>
   </el-header>
   <el-main style="padding: 0; margin: 0; display: block; overflow: hidden;">
-    <div class="result-title" >
-      <div class="result-title-text">搜索结果</div>
-      <div class="result-title-num">共{{this.searchResultBooks.length}}条</div>
+    <div class="cart-header">
+      <div class="cart-header-texth1">我的购物车</div>
+      <div class="cart-header-texth2">全部商品 {{this.cartBook.length}}</div>
     </div>
-    <div class="result-attribute-bar" >
-      <div class="result-attribute-text">
-        关键词：
+    <div class="cart-items-title">
+      <div class="select-all-wrapper">
+        <el-checkbox style="margin-left: 36px; margin-top: 2px;" v-model="this.isSelectAll" @change="this.selectAllChangeHandler()"></el-checkbox>
+        <div class="cart-items-title-selectall">
+          全选
+        </div>
       </div>
-      <div class="result-attribute-keyword">
-        "{{ this.keyword }}"
+      <div class="cart-items-title-commodity">
+        商品
+      </div>
+      <div class="cart-items-title-single-price">
+        单价
+      </div>
+      <div class="cart-items-title-num">
+        数量
+      </div>
+      <div class="cart-items-title-total-price">
+        总价
       </div>
     </div>
-    <div class="content-container" style="display: inline-flex">
-      <div class="book-container" style="background-color: transparent">
-        <div class="book-item-container" v-for="item in searchResultBooks" :key="item">
-          <div class="book-item-cover-wrapper">
-            <img class="book-item-cover-pic" :src="item.cover">
+    <div class="cart-items-wrapper">
+      <div class="cart-item" v-for="item in cartBook" :key="item">
+        <div style="display: inline-flex">
+          <div class="item-select">
+            <el-checkbox v-model="item.isSelected" class="cart-items-select" @change="this.selectSingleChangeHandler"></el-checkbox>
           </div>
-          <div class="book-item-title">
-            {{item.name}}
-          </div>
-          <div class="book-item-info">
-            {{item.author}}, {{item.publishYear}}
-          </div>
-          <div class="book-rating-price">
-            <div class="book-rating">
-              <el-icon size="17" style="margin-top: 3px; margin-right: 3px">
-                <StarFilled style="color: #F4AE4B;"/>
-              </el-icon>
-              {{item.rate}}
-            </div>
-            <div class="book-price">
-              ￥{{item.singlePrice.toFixed(2)}}
+          <div class="item-wrapper">
+            <div class="item-cover-wrapper">
+              <img class="item-cover-pic" :src="item.cover">
             </div>
           </div>
-          <div class="book-button-container">
-            <div class="book-button-like">
-              <button class="book-button-style">
-                <i class="bi bi-heart" style="line-height: 24px;"></i>
-              </button>
+          <div class="item-info-wrapper">
+            <div class="item-title">
+              {{item.name}}
             </div>
-            <div class="book-button-addtocart">
-              <button class="book-button-style">
-                加入购物车
-              </button>
+            <div class="item-author">
+              {{item.author}} [著]
+            </div>
+            <div class="item-publisher">
+              {{item.publisher}}
+            </div>
+          </div>
+          <div class="version-select">
+            <div class="item-version">
+              {{item.version}}
+            </div>
+          </div>
+          <div class="single-price">
+            <div class="item-single-price">
+              ￥{{item.singlePrice}}
             </div>
           </div>
 
+          <div class="num">
+            <div class="item-num">
+              <el-input-number v-model="item.itemNum" size="small" class="item-number-select" :min="1" @change="this.selectNumChangeHandler">
+
+              </el-input-number>
+              <div class="item-isStock">
+                {{item.isStock}}
+              </div>
+            </div>
+          </div>
+
+          <div class="total-price">
+            <div class="item-total-price">
+              ￥{{(item.singlePrice * item.itemNum).toFixed(2)}}
+            </div>
+          </div>
+
+          <div class="options">
+            <div class="item-delete">
+              <button class="option-text-button">删除</button>
+            </div>
+            <div class="item-move">
+              <button class="option-text-button">移入收藏夹</button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="category-container">
-        <el-collapse class="collapse-wrapper" v-model="this.collapseActiveNames">
-          <el-collapse-item class="collapse-wrapper-item" title="图书分类" id="first-item" name="category">
-            <el-tree :data="this.categoryTreeData" node-key="id" :default-expanded-keys="[1]" style="margin-left: 8px"/>
-          </el-collapse-item>
-          <el-collapse-item class="collapse-wrapper-item" title="价格区间" id="price-control-panel" name="price">
-            <el-input-number class="price-control" controls-position="right" v-model="this.siftPrice[0]" size="small" style="margin-right: 4px;"></el-input-number>
-            <div style="line-height: 26px; color: #A091B2">-</div>
-            <el-input-number class="price-control" controls-position="right" v-model="this.siftPrice[1]" size="small" style="margin-left: 4px;"></el-input-number>
-          </el-collapse-item>
-          <el-collapse-item class="collapse-wrapper-item" title="语言" name="language">
-            <el-checkbox v-model="this.selectLanguage.SimpleChinese" label="简体中文" class="language-checkbox"></el-checkbox>
-            <el-checkbox v-model="this.selectLanguage.English" label="英文" class="language-checkbox"></el-checkbox>
-            <el-checkbox v-model="this.selectLanguage.ComplexChinese" label="繁体中文" class="language-checkbox"></el-checkbox>
-          </el-collapse-item>
-          <el-collapse-item class="collapse-wrapper-item" title="评分" id="last-item" name="rate">
-            <div class="rate-collapse" style="display: inline-flex">
-              <el-rate v-model="this.rateCollapse[3]" disabled text-color="#F4AE4B" size="small"></el-rate>
-              <div class="rate-collapse-text">> 4.0</div>
-            </div>
-            <div class="rate-collapse" style="display: inline-flex">
-              <el-rate v-model="this.rateCollapse[2]" disabled text-color="#F4AE4B" size="small"></el-rate>
-              <div class="rate-collapse-text">> 3.0</div>
-            </div>
-            <div class="rate-collapse" style="display: inline-flex">
-              <el-rate v-model="this.rateCollapse[1]" disabled text-color="#F4AE4B" size="small"></el-rate>
-              <div class="rate-collapse-text">> 2.0</div>
-            </div>
-            <div class="rate-collapse" style="display: inline-flex">
-              <el-rate v-model="this.rateCollapse[0]" disabled text-color="#F4AE4B" size="small"></el-rate>
-              <div class="rate-collapse-text">> 1.0</div>
-            </div>
-          </el-collapse-item>
-        </el-collapse>
+        <el-divider class="divider" border-style="dashed"></el-divider>
       </div>
     </div>
   </el-main>
+  <el-footer class="footer-wrapper">
+    <el-affix position="bottom" style="width: 100vw;">
+      <div style="display: inline-flex; background-color: white; width: 100%; box-shadow: 0 -2px 8px 2px rgba(0, 0, 0, 0.06); padding: 0">
+        <div class="bottom-left-wrapper">
+          <div class="select-all-wrapper-bottom">
+            <el-checkbox style="margin-left: 36px; margin-top: 12px;" v-model="this.isSelectAll" @change="this.selectAllChangeHandler()"></el-checkbox>
+            <div class="bottom-title-selectall">
+              全选
+            </div>
+          </div>
+          <div class="bottom-title-left">
+            <button class="option-text-button-bottom">删除选中的商品</button>
+          </div>
+          <div class="bottom-title-left">
+            <button class="option-text-button-bottom">移入收藏夹</button>
+          </div>
+        </div>
+        <div class="bottom-right-wrapper">
+          <div class="cart-select-count" style="padding: 0">
+            已选择
+            <div class="cart-select-count-num">
+              {{this.cartSelectCount}}
+            </div>
+            件商品
+          </div>
+          <div class="cart-total-price" style="padding: 0">
+            总价：
+            <div class="cart-total-price-num">
+              ￥{{this.cartTotalPrice.toFixed(2)}}
+            </div>
+          </div>
+          <div style="font-size: 12px; line-height: 58px;">（{{ this.transportFeeCondition }}）</div>
+          <div class="checkout-button-wrapper">
+            <button class="checkout-button">结算</button>
+          </div>
+        </div>
+      </div>
+    </el-affix>
+  </el-footer>
 </template>
 
 <script>
 import {getImageUrl} from "@/utils/utils.js";
 
 export default {
-  name: "SearchResult",
+  name: "user-cart",
   data(){
     return{
       userSearchInput:'',
-      collapseActiveNames:['category','language'],
-      rateCollapse:[1.0,2.0,3.0,4.0],
-      userSearch:'',
-      keyword: '村上春树',
       showExpand: false,
       showExpandCategory: false,
       showExpandCollection: false,
       collectionBookRecommend: [],
-      selectLanguage: {SimpleChinese: false, ComplexChinese: false, English: false},
-      siftPrice: ['',''],
-      categoryTreeData:[
-        {
-          id: 1,
-          label: '小说',
-          children: [
-            {id:5, label: '悬疑与推理'},{id:6, label: '惊悚'},{id:7, label: '科幻'},{id:8, label: '言情'},{id:9, label: '奇幻与玄幻'},{id:10,label: '武侠'}
-          ],
+      isSelectAll: false,
+      cartSelectCount: 0,
+      cartTotalPrice: 0,
+      transportFeeCondition: "不包含运费",
+      cartBook: [{cover: getImageUrl("book-covers/xiaowangzidiancangban"),
+        name: "《小王子》出版80周年MINI珍藏版（定制版）",
+        author: "[法] 安托万·德·圣埃克苏佩里",
+        publisher: "湖南文艺出版社",
+        version: "MINI典藏版",
+        singlePrice: "138.00",
+        isStock: "有货",
+        itemNum: 1,
+        isSelected: false,
+      },
+        {cover: getImageUrl("book-covers/yunbianyougexiaomaibu"),
+          name: "云边有个小卖部",
+          author: "张嘉佳",
+          publisher: "湖南文艺出版社",
+          version: "平装",
+          singlePrice: "42.00",
+          isStock: "有货",
+          itemNum: 1,
+          isSelected: false,
         },
-        {
-          id: 2,
-          label: '文学',
-          children: [{id: 11, label: '占位1'}],
+        {cover: getImageUrl("book-covers/huoluanshiqideaiqing"),
+          name: "霍乱时期的爱情",
+          author: "[哥伦比亚] 加西亚·马尔克斯",
+          publisher: "南海出版公司",
+          version: "平装",
+          singlePrice: "69.00",
+          isStock: "有货",
+          itemNum: 1,
+          isSelected: false,
         },
-        {
-          id: 3,
-          label: '科普与工具',
-          children: [{id:12, label: '占位1'}],
+        {cover: getImageUrl("book-covers/beixizidu"),
+          name: "悲喜自渡",
+          author: "季羡林",
+          publisher: "江苏凤凰文艺出版社",
+          version: "平装",
+          singlePrice: "45.00",
+          isStock: "有货",
+          itemNum: 1,
+          isSelected: false,
         },
-        {
-          id: 4,
-          label:'少儿',
-          children: [{id:13, label: '占位1'}]
-        }
-      ],
-      searchResultBooks:[
-        {
-          cover: getImageUrl("book-covers/haibiandekafuka"),
-          name: "海边的卡夫卡",
-          author: "[日] 村上春树",
-          publishYear: "2018",
-          rate: 4.1,
-          singlePrice: 59.00,
-        },
-        {
-          cover: getImageUrl("book-covers/nuoweidesenlin"),
-          name: "挪威的森林",
-          author: "[日] 村上春树",
-          publishYear: "2018",
-          rate: 4.1,
-          singlePrice: 59.00,
-        },
-        {
-          cover: getImageUrl("book-covers/qimao"),
-          name: "弃猫：当我谈起父亲时",
-          author: "[日] 村上春树",
-          publishYear: "2021",
-          rate: 3.7,
-          singlePrice: 48.00,
-        },
-        {
-          cover: getImageUrl("/book-covers/qietingfengyin"),
-          name: "且听风吟",
-          author: "[日] 村上春树",
-          publishYear: "2018",
-          rate: 3.8,
-          singlePrice: 28.00,
-        },
-        {
-          cover: getImageUrl("book-covers/cishaqishituanzhang"),
-          name: "刺杀骑士团长",
-          author: "[日] 村上春树",
-          publishYear: "2018",
-          rate: 3.8,
-          singlePrice: 98.00,
-        },
-        {
-          cover: getImageUrl("book-covers/meiyousecaideduoqizuo"),
-          name: "没有色彩的多崎作和他的巡礼之年",
-          author: "[日] 村上春树",
-          publishYear: "2013",
-          rate: 3.8,
-          singlePrice: 39.50,
-        },
-        {
-          cover: getImageUrl("book-covers/wodezhiyeshixiaoshuojia"),
-          name: "我的职业是小说家",
-          author: "[日] 村上春树",
-          publishYear: "2017",
-          rate: 4.1,
-          singlePrice: 45,
-        },
-        {
-          cover: getImageUrl("book-covers/liekexingdundeyouling"),
-          name: "列克星敦的幽灵",
-          author: "[日] 村上春树",
-          publishYear: "2021",
-          rate: 3.6,
-          singlePrice: 45,
-        },
-        {
-          cover: getImageUrl("book-covers/yudaobaifenzhibaidenvhai"),
-          name: "遇到百分之百的女孩",
-          author: "[日] 村上春树",
-          publishYear: "2021",
-          rate: 3.7,
-          singlePrice: 48,
-        },
-        {
-          cover: getImageUrl("book-covers/quzhongguodexiaochuan"),
-          name: "去中国的小船",
-          author: "[日] 村上春树",
-          publishYear: "2021",
-          rate: 3.7,
-          singlePrice: 52,
-        },
-        {
-          cover: getImageUrl("book-covers/shendehaiziquantiaowu"),
-          name: "神的孩子全跳舞",
-          author: "[日] 村上春树",
-          publishYear: "2021",
-          rate: 3.8,
-          singlePrice: 48,
-        },
-        {
-          cover: getImageUrl("book-covers/wuwuwu"),
-          name: "舞！舞！舞！",
-          author: "[日] 村上春树",
-          publishYear: "2018",
-          rate: 4.2,
-          singlePrice: 52,
-        },
-        {
-          cover: getImageUrl("book-covers/yijiuqisanniandetanziqiu"),
-          name: "1973年的弹子球",
-          author: "[日] 村上春树",
-          publishYear: "2018",
-          rate: 3.6,
-          singlePrice: 37,
-        },
-      ]
+        {cover: getImageUrl("book-covers/fangsiqidechulianleyuan"),
+          name: "房思琪的初恋乐园",
+          author: "林奕含",
+          publisher: "北京联合出版公司",
+          version: "平装",
+          singlePrice: "45.00",
+          isStock: "有货",
+          itemNum: 1,
+          isSelected: false,
+        }],
     }
   },
-  methods: {
-    onMouseOverExpand() {
+  methods:{
+
+    onMouseOverExpand(){
       this.showExpand = true;
     },
-    onMouseOutExpand() {
+    onMouseOutExpand(){
       this.showExpand = false;
     },
 
-    onMouseOverExpandCategory() {
+    onMouseOverExpandCategory(){
       this.showExpandCategory = true;
     },
-    onMouseOutExpandCategory() {
+    onMouseOutExpandCategory(){
       this.showExpandCategory = false;
     },
-    onMouseOverExpandCollection() {
+    onMouseOverExpandCollection(){
       this.showExpandCollection = true;
     },
-    onMouseOutExpandCollection() {
+    onMouseOutExpandCollection(){
       this.showExpandCollection = false;
+    },
+    selectAllChangeHandler(){
+      if(this.isSelectAll){
+        for(let i = 0; i < this.cartBook.length; i++){
+          this.cartBook[i].isSelected = true;
+        }
+      }
+      if(!this.isSelectAll){
+        for(let i = 0; i < this.cartBook.length; i++){
+          this.cartBook[i].isSelected = false;
+        }
+      }
+      this.selectSingleChangeHandler();
+    },
+    selectSingleChangeHandler(){
+      let tmpCnt = 0;
+      let tmpTotal = 0;
+      for(let i = 0; i < this.cartBook.length; i++){
+        if(this.cartBook[i].isSelected){
+          tmpCnt ++;
+          tmpTotal += this.cartBook[i].itemNum * this.cartBook[i].singlePrice;
+        }
+      }
+      this.cartSelectCount = tmpCnt;
+      this.cartTotalPrice = tmpTotal;
+      if(this.cartTotalPrice >= 199){
+        this.transportFeeCondition = "平台免运费";
+      }else{
+        this.transportFeeCondition = "不包含运费";
+      }
+    },
+    selectNumChangeHandler(){
+      let tmpTotal = 0;
+      for(let i = 0; i < this.cartBook.length; i++){
+        if(this.cartBook[i].isSelected){
+          tmpTotal += this.cartBook[i].itemNum * this.cartBook[i].singlePrice;
+        }
+      }
+      this.cartTotalPrice = tmpTotal;
+      if(this.cartTotalPrice >= 199){
+        this.transportFeeCondition = "平台免运费";
+      }else{
+        this.transportFeeCondition = "不包含运费";
+      }
     },
     enterChange(){
       console.log(this.userSearch);
       this.$router.push('/search_result');
     }
+  },
+  mounted() {
   },
   setup(){
     function getImage(url) {
@@ -457,5 +461,5 @@ export default {
 </script>
 
 <style scoped>
-@import "search-result.css";
+@import "user-cart.css";
 </style>
