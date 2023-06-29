@@ -440,9 +440,20 @@ export default {
       this.showExpandCollection = false;
     },
     enterChange(){
+      /*
+      fetch("/back-end-data.json")
+          .then(x => x.json())
+          .then(x => {
+            this.searchResultBooks = x.searchResult; //searchResult是json文件对的数组
+          });
+      console.log(this.searchResultBooks);
+
+       */
+
       console.log(this.userSearch);
       this.$router.push('/search_result');
-    }
+    },
+
   },
   setup(){
     function getImage(url) {
