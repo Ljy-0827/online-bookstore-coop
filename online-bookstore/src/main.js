@@ -1,8 +1,6 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
-import HomeView from './views/HomeView.vue';
-import AboutView from './views/AboutView.vue';
 import App from './App.vue'
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
