@@ -205,7 +205,7 @@
       </div>
     </div>
     <div class="cart-items-wrapper">
-      <div class="cart-item" v-for="item in cartBook" :key="item">
+      <div class="cart-item" v-for="(item, index) in cartBook" :key="index">
         <div style="display: inline-flex">
           <div class="item-select">
             <el-checkbox v-model="item.isSelected" class="cart-items-select" @change="this.selectSingleChangeHandler"></el-checkbox>
@@ -239,7 +239,7 @@
 
           <div class="num">
             <div class="item-num">
-              <el-input-number v-model="item.itemNum" size="small" class="item-number-select" :min="1" @change="this.selectNumChangeHandler">
+              <el-input-number v-model="item.itemNum" size="small" class="item-number-select" :min="1" @change="this.selectNumChangeHandler(index)">
 
               </el-input-number>
               <div class="item-isStock">
@@ -332,6 +332,7 @@ export default {
         singlePrice: "138.00",
         isStock: "有货",
         itemNum: 1,
+        isbn: '9787572607981',
         isSelected: false,
       },
         {cover: getImageUrl("book-covers/yunbianyougexiaomaibu"),
@@ -342,6 +343,7 @@ export default {
           singlePrice: "42.00",
           isStock: "有货",
           itemNum: 1,
+          isbn: '9787540487645',
           isSelected: false,
         },
         {cover: getImageUrl("book-covers/huoluanshiqideaiqing"),
@@ -352,6 +354,7 @@ export default {
           singlePrice: "69.00",
           isStock: "有货",
           itemNum: 1,
+          isbn: '9787544297059',
           isSelected: false,
         },
         {cover: getImageUrl("book-covers/beixizidu"),
@@ -362,6 +365,7 @@ export default {
           singlePrice: "45.00",
           isStock: "有货",
           itemNum: 1,
+          isbn: '9787559436658',
           isSelected: false,
         },
         {cover: getImageUrl("book-covers/fangsiqidechulianleyuan"),
@@ -372,6 +376,7 @@ export default {
           singlePrice: "45.00",
           isStock: "有货",
           itemNum: 1,
+          isbn: '9787559614636',
           isSelected: false,
         }],
     }
@@ -427,7 +432,7 @@ export default {
         this.transportFeeCondition = "不包含运费";
       }
     },
-    selectNumChangeHandler(){
+    selectNumChangeHandler(index){
       let tmpTotal = 0;
       for(let i = 0; i < this.cartBook.length; i++){
         if(this.cartBook[i].isSelected){
@@ -440,11 +445,25 @@ export default {
       }else{
         this.transportFeeCondition = "不包含运费";
       }
+
+      fetch('http://127.0.0.1:5000/cart', {
+        method: 'post',
+        body: JSON.stringify({
+          isbn: this.cartBook[index].isbn,
+          itemNum: this.cartBook[index].num,
+        }),
+      })
+          .then(x => x.json())
+          .then(x => {
+            this.cartBook = x.cartBook;
+          });
+          console.log(this.cartBook)
     },
     enterChange(){
-      console.log(this.userSearch);
+      console.log(this.userSearchInput);
       this.$router.push('/search_result');
-    }
+    },
+
   },
   mounted() {
   },
