@@ -1,0 +1,306 @@
+.main-wrapper{
+    display: block;
+}
+.top-wrapper{
+    width: 79vw;
+    padding: 0;
+    display: inline-flex;
+}
+
+.top-left{
+    width: 32vw;
+    display: block;
+    margin-left: 2vw;
+}
+
+.point-box{
+    width: calc(32vw - 2px);
+    /*
+    height: calc(230px + 2vw);
+
+     */
+    border: solid 1px #E1DEE7;
+    border-radius: 8px;
+    display: block;
+}
+
+.user-point{
+    color: #65156C;
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 2vw;
+    width: 70px;
+    text-align: center;
+    margin-left: calc((32vw - 2px - 70px) / 2);
+}
+
+.user-point-chn{
+    color: #9F92B0;
+    font-size: 14px;
+    width: 70px;
+    margin-top: 0.2vw;
+    text-align: center;
+    margin-left: calc((32vw - 2px - 70px) / 2);
+    margin-bottom: 1vw;
+}
+
+.top-right{
+    width: 38vw;
+    margin-left: 5vw;
+}
+
+.panel-title{
+    font-size: 18px;
+    color: #333333;
+    line-height: 30px;
+    margin-bottom: 16px;
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+.point-info{
+    display: inline-flex;
+    margin-left: 2vw;
+    margin-top: 2vw;
+    width: 34vw;
+}
+
+.point-info-title{
+    color: #333333;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 2vw;
+}
+
+.point-info-grade{
+    color: #65156C;
+    font-size: 16px;
+    font-weight: 450;
+    margin-top: -2px;
+}
+
+.point-info-icon{
+    color: #A091B2;
+    margin-left: 2vw;
+    margin-top: 1px;
+}
+
+.point-rights{
+    display: block;
+    margin-top: -2px;
+    margin-bottom: 2vw;
+}
+
+.point-right-item{
+    color: #333333;
+    font-size: 12px;
+    line-height: 26px;
+}
+
+.form-wrapper{
+    width: 34vw;
+}
+
+.form-button{
+    margin-top: 10px;
+}
+
+
+::v-deep .el-input.form-input{
+    border-color: #E1DEE7;
+}
+
+::v-deep .el-input.form-input .el-input__wrapper{
+    border-radius: 6px;
+}
+
+::v-deep .el-input.form-input .el-input__inner{
+    font-weight: 400;
+    font-size: 12px;
+    color: #333333;
+}
+
+::v-deep .el-input.form-input {
+    --el-input-border-color: #E1DEE7;
+    --el-input-hover-border-color: #A091B2;
+    --el-input-focus-border-color: #65156C;
+}
+
+:deep .el-form-item__label{
+    font-size: 13px;
+    color: #A091B2;
+}
+
+:deep .el-form-item{
+    margin-bottom: 1.8vw;
+}
+
+
+.bottom-wrapper{
+    width: 72vw;
+    padding: 0;
+    margin-left: 2vw;
+    display: block;
+}
+
+.coupon-wrapper{
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.coupon-top-box{
+    border: solid 1px #E1DEE7;
+    width: 12vw;
+
+    border-radius: 8px 8px 0 0;
+    background-color: #FAFAFC;
+    margin-right: 2vw;
+    display: block;
+}
+
+.coupon-name{
+    font-size: 12px;
+    color: #333333;
+    margin-top: 1.5vw;
+    width: 120px;
+    text-align: center;
+    margin-left: calc((12vw - 120px) / 2);
+}
+
+.coupon-title{
+    font-size: 18px;
+    color: #65156C;
+    font-weight: 450;
+    width: 120px;
+    text-align: center;
+    margin-left: calc((12vw - 120px) / 2);
+    margin-top: 0.5vw;
+    margin-bottom: 1.3vw;
+}
+
+.coupon-box{
+    display: block;
+}
+
+.coupon-bottom-box{
+    border: solid 1px #E1DEE7;
+    border-radius: 0 0 8px 8px;
+    display: block;
+    width: 12vw;
+    margin-top: -1px;
+    margin-bottom: 1vw;
+}
+
+.start-date{
+    font-size: 12px;
+    color: #333333;
+    margin-left: 1vw;
+    line-height: 20px;
+    margin-top: 0.5vw;
+}
+
+.end-date{
+    font-size: 12px;
+    margin-left: calc(1vw + 36px);
+    line-height: 20px;
+    color: #333333;
+    margin-bottom: 0.5vw;
+}
+
+@media screen and (max-width: 1100px){
+    .top-wrapper{
+        width: 869px;
+    }
+
+    .top-left{
+        width: 352px;
+    }
+
+    .top-right{
+        width: 418px;
+        margin-left: 55px;
+    }
+
+    .point-box{
+        width: calc(352px - 2px);
+        /*
+        height: calc(230px + 22px);
+         */
+    }
+
+    .user-point{
+        margin-top: 22px;
+        margin-left: calc(280px / 2);
+    }
+
+    .user-point-chn{
+        margin-top: 2.2px;
+        text-align: center;
+        margin-left: calc(280px / 2);
+        margin-bottom: 11px;
+    }
+
+    .point-info{
+        margin-left: 22px;
+        margin-top: 22px;
+        width: 374px;
+    }
+
+    .point-info-title{
+        margin-right: 22px;
+    }
+
+    .point-info-icon{
+        margin-left: 22px;
+    }
+
+    .point-rights{
+        margin-bottom: 22px;
+    }
+
+    :deep .el-form-item{
+        margin-bottom: 19.8px;
+    }
+
+    .bottom-wrapper{
+        width: 792px;
+        padding: 0;
+        display: block;
+        margin-left: 22px;
+
+    }
+
+    .coupon-top-box{
+        width: 132px;
+        margin-right: 22px;
+    }
+
+    .coupon-name{
+        margin-top: 16.5px;
+        margin-left: calc((132px - 120px) / 2);
+    }
+
+    .coupon-title{
+        margin-left: calc((132px - 120px) / 2);
+        margin-top: 5.5px;
+        margin-bottom: 14.3px;
+    }
+
+
+    .coupon-bottom-box{
+        width: 132px;
+        margin-bottom: 11px;
+    }
+
+    .start-date{
+        margin-left: 11px;
+        margin-top: 5.5px;
+    }
+
+    .end-date{
+        margin-left: calc(11px + 36px);
+        margin-bottom: 5.5px;
+    }
+
+
+}

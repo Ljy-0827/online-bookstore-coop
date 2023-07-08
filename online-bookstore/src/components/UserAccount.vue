@@ -184,11 +184,10 @@
       <div class="panel-title" style="margin-left: 36px">账号</div>
       <div class="menu-container" style="margin-left: 36px; display: block">
         <el-menu default-active="2" active-text-color="#65156C" background-color="white" class="left-menu-wrapper">
-          <el-menu-item index="1" id="first-menu-item">积分</el-menu-item>
+          <el-menu-item index="1" @click="this.$router.push('/account/info')" id="first-menu-item">账号</el-menu-item>
           <el-menu-item index="2" @click="this.$router.push('/account/order')">订单</el-menu-item>
-          <el-menu-item index="3">账号设置</el-menu-item>
-          <el-menu-item index="4">收货地址管理</el-menu-item>
-          <el-menu-item index="5" id="last-menu-item">优惠券</el-menu-item>
+          <el-menu-item index="3">收货地址管理</el-menu-item>
+          <el-menu-item index="4" id="last-menu-item">优惠券</el-menu-item>
         </el-menu>
         <button class="logout-button">登出</button>
       </div>
@@ -266,6 +265,7 @@ export default {
 @media screen and (max-width: 1100px){
   .router-view{
     margin-left: 22px;
+    width: 869px;
   }
 }
 </style>

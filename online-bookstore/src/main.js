@@ -13,6 +13,7 @@ import HomePage from "@/components/HomePage.vue";
 import UserCart from "@/components/UserCart.vue";
 import UserAccount from "@/components/UserAccount.vue";
 import UserOrder from "@/components/UserOrder.vue";
+import UserInfo from "@/components/UserInfo.vue";
 
 const myRouter = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,7 +44,11 @@ const myRouter = createRouter({
             children: [        {
                 path: 'order',
                 name: 'order',
-                component: UserOrder
+                component: UserOrder,
+            },{
+                path: 'info',
+                name: 'info',
+                component: UserInfo
             }]
         },
 
