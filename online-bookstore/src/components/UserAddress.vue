@@ -150,14 +150,14 @@ export default {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          province: this.address[this.address.length - 1].addProvince,
-          city: this.address[this.address.length - 1].addCity,
-          district: this.address[this.address.length - 1].addDistrict,
-          postal_code: this.address[this.address.length - 1].addPostcode,
-          detail: this.address[this.address.length - 1].addDetail,
-          name: this.address[this.address.length - 1].addName,
-          phone: this.address[this.address.length - 1].addPhone,
-          email: this.address[this.address.length - 1].addEmail,
+          province: this.address[this.address.length - 1].province,
+          city: this.address[this.address.length - 1].city,
+          district: this.address[this.address.length - 1].district,
+          postal_code: this.address[this.address.length - 1].postal_code,
+          detail: this.address[this.address.length - 1].detail,
+          name: this.address[this.address.length - 1].name,
+          phone: this.address[this.address.length - 1].phone,
+          email: this.address[this.address.length - 1].email,
         }),
       })
           .then(x => x.json())
