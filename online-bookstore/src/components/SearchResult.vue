@@ -212,7 +212,7 @@
               {{item.rating}}
             </div>
             <div class="book-price">
-              ￥{{item.singlePrice.toFixed(2)}}
+              ￥{{item.singlePrice}}
             </div>
           </div>
           <div class="book-button-container">
@@ -321,7 +321,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2018",
           rating: 4.1,
-          singlePrice: 59.00,
+          singlePrice: '59.00',
         },
         {
           coverURL: getImageUrl("book-covers/nuoweidesenlin.png"),
@@ -329,7 +329,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2018",
           rating: 4.1,
-          singlePrice: 59.00,
+          singlePrice: '59.00',
         },
         {
           coverURL: getImageUrl("book-covers/qimao.png"),
@@ -337,7 +337,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2021",
           rating: 3.7,
-          singlePrice: 48.00,
+          singlePrice: '48.00',
         },
         {
           coverURL: getImageUrl("/book-covers/qietingfengyin.png"),
@@ -345,7 +345,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2018",
           rating: 3.8,
-          singlePrice: 28.00,
+          singlePrice: '28.00',
         },
         {
           coverURL: getImageUrl("book-covers/cishaqishituanzhang.png"),
@@ -353,7 +353,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2018",
           rating: 3.8,
-          singlePrice: 98.00,
+          singlePrice: '98.00',
         },
         {
           coverURL: getImageUrl("book-covers/meiyousecaideduoqizuo.png"),
@@ -361,7 +361,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2013",
           rating: 3.8,
-          singlePrice: 39.50,
+          singlePrice: '39.50',
         },
         {
           coverURL: getImageUrl("book-covers/wodezhiyeshixiaoshuojia.png"),
@@ -369,7 +369,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2017",
           rating: 4.1,
-          singlePrice: 45,
+          singlePrice: '45.00',
         },
         {
           coverURL: getImageUrl("book-covers/liekexingdundeyouling.png"),
@@ -377,7 +377,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2021",
           rating: 3.6,
-          singlePrice: 45,
+          singlePrice: '45.00',
         },
         {
           coverURL: getImageUrl("book-covers/yudaobaifenzhibaidenvhai.png"),
@@ -385,7 +385,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2021",
           rating: 3.7,
-          singlePrice: 48,
+          singlePrice: '48.00',
         },
         {
           coverURL: getImageUrl("book-covers/quzhongguodexiaochuan.png"),
@@ -393,7 +393,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2021",
           rating: 3.7,
-          singlePrice: 52,
+          singlePrice: '52.00',
         },
         {
           coverURL: getImageUrl("book-covers/shendehaiziquantiaowu.png"),
@@ -401,7 +401,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2021",
           rating: 3.8,
-          singlePrice: 48,
+          singlePrice: '48.00',
         },
         {
           coverURL: getImageUrl("book-covers/wuwuwu.png"),
@@ -409,7 +409,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2018",
           rating: 4.2,
-          singlePrice: 52,
+          singlePrice: '52.00',
         },
         {
           coverURL: getImageUrl("book-covers/yijiuqisanniandetanziqiu.png"),
@@ -417,7 +417,7 @@ export default {
           author: "[日] 村上春树",
           publishYear: "2018",
           rating: 3.6,
-          singlePrice: 37,
+          singlePrice: '37.00',
         },
       ]
     }
@@ -445,6 +445,9 @@ export default {
     enterChange(){
       fetch('http://${ipAddress}/search-result', {
         method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           keyword: this.userSearchInput,
         }),
