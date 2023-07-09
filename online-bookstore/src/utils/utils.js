@@ -1,5 +1,5 @@
 export function getImageUrl(name) {
-    let str = `../assets/${name}`;
+    let str = `${name}`;
     let a = new URL(str, import.meta.url).href
     return a;
 }

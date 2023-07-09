@@ -25,7 +25,7 @@
                   订单总价
                 </div>
                 <div class="simple-order-info-item-info">
-                  ￥{{ item.totalPrice.toFixed(2) }}
+                  ￥{{ item.totalPrice}}
                 </div>
               </div>
               <div class="simple-order-info-item-wrapper">
@@ -41,7 +41,7 @@
                   送货地址
                 </div>
                 <div class="simple-order-info-item-info">
-                  {{ item.addressVague }}
+                  {{ item.city }}，{{item.district}}
                 </div>
               </div>
               <div class="simple-order-info-item-wrapper">
@@ -70,7 +70,7 @@
               </div>
               <div class="simple-order-book-info-left">
                 <div class="simple-order-book-title">
-                  {{bookItem.title}} - {{bookItem.version}}
+                  {{bookItem.title}}
                 </div>
                 <div class="simple-order-book-author">
                   {{bookItem.author}} 著
@@ -79,7 +79,7 @@
                   {{bookItem.publisher}}
                 </div>
                 <div class="simple-order-book-single-price">
-                  ￥{{bookItem.singlePrice.toFixed(2)}}
+                  ￥{{bookItem.singlePrice}}
                 </div>
               </div>
               <div class="simple-order-book-info-right">
@@ -87,7 +87,7 @@
                   共 {{bookItem.num}} 件
                 </div>
                 <div class="simple-order-book-total-price">
-                  ￥{{(bookItem.num * bookItem.singlePrice).toFixed(2)}}
+                  ￥{{(bookItem.num * bookItem.singlePrice)}}
                 </div>
               </div>
             </div>
@@ -99,6 +99,7 @@
 
 <script>
 import {getImageUrl} from "@/utils/utils.js";
+import {ipAddress} from "@/utils/utils.js";
 
 export default {
   name: "UserOrder",
@@ -114,43 +115,41 @@ export default {
         createDate: "2023年6月25日",
         totalPrice: 218,
         totalNum: 5,
-        addressVague: "北京市，海淀区",
+        district: '海淀区',
+        city: '北京市',
         status: "已完成",
         orderBooks:[{
-          cover: getImageUrl("book-covers/menglihualuozhiduoshao"),
+          cover: getImageUrl("../assets/book-covers/menglihualuozhiduoshao.png"),
           title: "梦里花落知多少",
           author: "三毛",
           publisher: "南海出版公司",
           num: 1,
           version: "平装",
-          singlePrice: 68,
+          singlePrice: '68.00',
         },
           {
-            cover: getImageUrl("book-covers/fangsiqidechulianleyuan"),
+            cover: getImageUrl("../assets/book-covers/fangsiqidechulianleyuan.png"),
             title: "房思琪的初恋乐园",
             author: "林奕含",
             publisher: "北京联合出版公司",
             num: 1,
-            version: "平装",
-            singlePrice: 45,
+            singlePrice: '45.00',
           },
           {
-            cover: getImageUrl("book-covers/reyezhimeng"),
+            cover: getImageUrl("../assets/book-covers/reyezhimeng.png"),
             title: "热夜之梦",
             author: "[美] 乔治·R·R.马丁",
             publisher: "湖南文艺出版社",
             num: 1,
-            version: "平装",
-            singlePrice: 68,
+            singlePrice: '68.00',
           },
           {
-            cover: getImageUrl("book-covers/aizailimingpoxiaoqian"),
+            cover: getImageUrl("../assets/book-covers/aizailimingpoxiaoqian.png"),
             title: "爱在黎明破晓前，爱在日落黄昏后",
             author: "[美] 金·克里",
             publisher: "中信出版社",
             num: 2,
-            version: "平装",
-            singlePrice: 28,
+            singlePrice: '28.00',
           },
         ]
       },
@@ -159,25 +158,24 @@ export default {
           createDate: "2023年6月22日",
           totalPrice: 98.5,
           totalNum: 2,
-          addressVague: "北京市，朝阳区",
+          district: '朝阳区',
+          city: '北京市',
           status: "已完成",
           orderBooks:[{
-            cover: getImageUrl("book-covers/xusanguanmaixueji"),
+            cover: getImageUrl("../assets/book-covers/xusanguanmaixueji.png"),
             title: "许三观卖血记",
             author: "余华",
             publisher: "北京十月文艺出版社",
             num: 1,
-            version: "平装",
-            singlePrice: 39.5,
+            singlePrice: '39.5',
           },
             {
-              cover: getImageUrl("book-covers/xuwudeshizijia"),
+              cover: getImageUrl("../assets/book-covers/xuwudeshizijia.png"),
               title: "虚无的十字架",
               author: "[日] 东野圭吾",
               publisher: "南海出版公司",
               num: 1,
-              version: "平装",
-              singlePrice: 59,
+              singlePrice: '59.00',
             }
           ]
         }],
@@ -209,13 +207,16 @@ export default {
     },
   },
   mounted() {
-
+    fetch(`http://${ipAddress}/order.json`)
+        .then(x => x.json())
+        .then(x => {
+          this.simpleOrders = x.orders;
+        });
   },
   setup(){
     function getImage(url) {
       return getImageUrl(url);
     }
-
     return {
       getImage
     }

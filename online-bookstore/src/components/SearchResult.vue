@@ -3,7 +3,7 @@
     <el-affix>
       <div style="display: inline-flex; background-color: white">
         <div style="width: 150px; height: 56px;">
-          <el-image :src="getImage('/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+          <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
         </div>
         <div class="header-left-menu">
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
@@ -46,7 +46,7 @@
                   </el-button>
                 </div>
                 <div class="hover-expand-left-box-bookcover">
-                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/loreolympus.png')">
+                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('../assets/book-covers/loreolympus.png')">
                 </div>
               </el-carousel-item>
               <el-carousel-item>
@@ -57,7 +57,7 @@
                   </el-button>
                 </div>
                 <div class="hover-expand-left-box-bookcover">
-                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/diqitian.png')">
+                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('../assets/book-covers/diqitian.png')">
                 </div>
               </el-carousel-item>
             </div>
@@ -279,7 +279,6 @@ export default {
   data(){
     return{
       userSearchInput:'',
-      keyWord: '',
       collapseActiveNames:['category','language'],
       rateCollapse:[1.0,2.0,3.0,4.0],
       userSearch:'',
@@ -316,7 +315,7 @@ export default {
       ],
       searchResultBooks:[
         {
-          coverURL: getImageUrl("book-covers/haibiandekafuka.png"),
+          coverURL: getImageUrl("../assets/book-covers/haibiandekafuka.png"),
           title: "海边的卡夫卡",
           author: "[日] 村上春树",
           publishYear: "2018",
@@ -324,7 +323,7 @@ export default {
           singlePrice: '59.00',
         },
         {
-          coverURL: getImageUrl("book-covers/nuoweidesenlin.png"),
+          coverURL: getImageUrl("../assets/book-covers/nuoweidesenlin.png"),
           title: "挪威的森林",
           author: "[日] 村上春树",
           publishYear: "2018",
@@ -332,7 +331,7 @@ export default {
           singlePrice: '59.00',
         },
         {
-          coverURL: getImageUrl("book-covers/qimao.png"),
+          coverURL: getImageUrl("../assets/book-covers/qimao.png"),
           title: "弃猫：当我谈起父亲时",
           author: "[日] 村上春树",
           publishYear: "2021",
@@ -340,7 +339,7 @@ export default {
           singlePrice: '48.00',
         },
         {
-          coverURL: getImageUrl("/book-covers/qietingfengyin.png"),
+          coverURL: getImageUrl("../assets//book-covers/qietingfengyin.png"),
           title: "且听风吟",
           author: "[日] 村上春树",
           publishYear: "2018",
@@ -348,7 +347,7 @@ export default {
           singlePrice: '28.00',
         },
         {
-          coverURL: getImageUrl("book-covers/cishaqishituanzhang.png"),
+          coverURL: getImageUrl("../assets/book-covers/cishaqishituanzhang.png"),
           title: "刺杀骑士团长",
           author: "[日] 村上春树",
           publishYear: "2018",
@@ -356,7 +355,7 @@ export default {
           singlePrice: '98.00',
         },
         {
-          coverURL: getImageUrl("book-covers/meiyousecaideduoqizuo.png"),
+          coverURL: getImageUrl("../assets/book-covers/meiyousecaideduoqizuo.png"),
           title: "没有色彩的多崎作和他的巡礼之年",
           author: "[日] 村上春树",
           publishYear: "2013",
@@ -364,7 +363,7 @@ export default {
           singlePrice: '39.50',
         },
         {
-          coverURL: getImageUrl("book-covers/wodezhiyeshixiaoshuojia.png"),
+          coverURL: getImageUrl("../assets/book-covers/wodezhiyeshixiaoshuojia.png"),
           title: "我的职业是小说家",
           author: "[日] 村上春树",
           publishYear: "2017",
@@ -372,7 +371,7 @@ export default {
           singlePrice: '45.00',
         },
         {
-          coverURL: getImageUrl("book-covers/liekexingdundeyouling.png"),
+          coverURL: getImageUrl("../assets/book-covers/liekexingdundeyouling.png"),
           title: "列克星敦的幽灵",
           author: "[日] 村上春树",
           publishYear: "2021",
@@ -380,7 +379,7 @@ export default {
           singlePrice: '45.00',
         },
         {
-          coverURL: getImageUrl("book-covers/yudaobaifenzhibaidenvhai.png"),
+          coverURL: getImageUrl("../assets/book-covers/yudaobaifenzhibaidenvhai.png"),
           title: "遇到百分之百的女孩",
           author: "[日] 村上春树",
           publishYear: "2021",
@@ -388,7 +387,7 @@ export default {
           singlePrice: '48.00',
         },
         {
-          coverURL: getImageUrl("book-covers/quzhongguodexiaochuan.png"),
+          coverURL: getImageUrl("../assets/book-covers/quzhongguodexiaochuan.png"),
           title: "去中国的小船",
           author: "[日] 村上春树",
           publishYear: "2021",
@@ -396,7 +395,7 @@ export default {
           singlePrice: '52.00',
         },
         {
-          coverURL: getImageUrl("book-covers/shendehaiziquantiaowu.png"),
+          coverURL: getImageUrl("../assets/book-covers/shendehaiziquantiaowu.png"),
           title: "神的孩子全跳舞",
           author: "[日] 村上春树",
           publishYear: "2021",
@@ -404,7 +403,7 @@ export default {
           singlePrice: '48.00',
         },
         {
-          coverURL: getImageUrl("book-covers/wuwuwu.png"),
+          coverURL: getImageUrl("../assets/book-covers/wuwuwu.png"),
           title: "舞！舞！舞！",
           author: "[日] 村上春树",
           publishYear: "2018",
@@ -412,7 +411,7 @@ export default {
           singlePrice: '52.00',
         },
         {
-          coverURL: getImageUrl("book-covers/yijiuqisanniandetanziqiu.png"),
+          coverURL: getImageUrl("../assets/book-covers/yijiuqisanniandetanziqiu.png"),
           title: "1973年的弹子球",
           author: "[日] 村上春树",
           publishYear: "2018",
@@ -443,7 +442,7 @@ export default {
       this.showExpandCollection = false;
     },
     enterChange(){
-      fetch('http://${ipAddress}/search-result', {
+      fetch(`http://${ipAddress}/search-result`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -456,6 +455,7 @@ export default {
           .then(x => {
             this.searchResultBooks = x.searchResult;
           });
+      this.keyword = this.userSearchInput;
     },
 
   },
