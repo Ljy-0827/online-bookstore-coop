@@ -1,7 +1,34 @@
-# Vue 3 + Vite
+## 前端部分开发及预览方法
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+- set up
+```
+npm install
+```
 
-## Recommended IDE Setup
+- 开发预览模式（打包前）
+```
+npm run dev
+```
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- 打包
+```
+npm run build
+```
+
+- 打包后预览
+```
+npm run preview
+```
+
+## 目前已实现的内容
+页面：
+- 主页 HomePage
+- 搜索结果页 SearchResult（前端开发时默认搜索关键词为村上春树）
+- 购物车页 UserCart
+
+跳转时：
+- 主页 http://127.0.0.1:5173（地址可能不同）
+- 搜索结果页 http://127.0.0.1:5173/search_result
+- 购物车页 http://127.0.0.1:5173/cart
+
+网页内触发跳转：鼠标focus所有的搜索栏后键盘敲击enter都会跳转至搜索结果页

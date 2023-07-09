@@ -3,7 +3,7 @@
     <el-affix>
       <div style="display: inline-flex; background-color: white">
         <div style="width: 150px; height: 56px;">
-          <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+          <el-image :src="getImage('/setting-png/logo-icon')" style="margin-top: 16px; margin-left: 20px;"></el-image>
         </div>
         <div class="header-left-menu">
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
@@ -46,7 +46,7 @@
                   </el-button>
                 </div>
                 <div class="hover-expand-left-box-bookcover">
-                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('../assets/book-covers/loreolympus.png')">
+                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/loreolympus')">
                 </div>
               </el-carousel-item>
               <el-carousel-item>
@@ -57,7 +57,7 @@
                   </el-button>
                 </div>
                 <div class="hover-expand-left-box-bookcover">
-                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('../assets/book-covers/diqitian.png')">
+                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/diqitian')">
                 </div>
               </el-carousel-item>
             </div>
@@ -179,30 +179,13 @@
       <div class="hover-expand-wrapper" v-show=this.showExpandCollection @mouseenter="onMouseOverExpandCollection"  @mouseleave="onMouseOutExpandCollection"></div>
     </el-affix>
   </el-header>
-  <el-main style="padding: 0; margin: 0; display: inline-flex; overflow: hidden;">
-    <div class="main-left">
-      <div class="panel-title" style="margin-left: 36px">账号</div>
-      <div class="menu-container" style="margin-left: 36px; display: block">
-        <el-menu default-active="2" active-text-color="#65156C" background-color="white" class="left-menu-wrapper">
-          <el-menu-item index="1" @click="this.$router.push('/account/info')" id="first-menu-item">账号</el-menu-item>
-          <el-menu-item index="2" @click="this.$router.push('/account/order')">订单</el-menu-item>
-          <el-menu-item index="3" @click="this.$router.push('/account/address')">收货地址管理</el-menu-item>
-          <el-menu-item index="4" id="last-menu-item">优惠券</el-menu-item>
-        </el-menu>
-        <button class="logout-button">登出</button>
-      </div>
-    </div>
-    <RouterView class="router-view">
-
-    </RouterView>
-  </el-main>
 </template>
 
 <script>
 import {getImageUrl} from "@/utils/utils.js";
 
 export default {
-  name: "UserAccount",
+  name: "HeaderGeneral",
   data(){
     return{
       userSearchInput:'',
@@ -254,18 +237,5 @@ export default {
 </script>
 
 <style scoped>
-@import "user-account.css";
 
-.router-view{
-  width: 79vw;
-  margin-left: 2vw;
-  display: block;
-}
-
-@media screen and (max-width: 1100px){
-  .router-view{
-    margin-left: 22px;
-    width: 869px;
-  }
-}
 </style>

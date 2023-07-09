@@ -54,7 +54,7 @@
             </div>
             <div class="item-box">
               <div class="item-title">邮编</div>
-              <div class="item-content">{{item.postcode}}</div>
+              <div class="item-content">{{item.postal_code}}</div>
             </div>
           </div>
           <div class="top-line-2">
@@ -89,6 +89,8 @@
 </template>
 
 <script>
+import {ipAddress} from "@/utils/utils.js";
+
 export default {
   name: "UserAddress",
   data(){
@@ -108,7 +110,7 @@ export default {
         province: '北京市',
         city: '北京市',
         district: '朝阳区',
-        postcode: '100124',
+        postal_code: '100124',
         detail:'南磨房镇 平乐园100号 北京工业大学',
         name: '赵子钰',
         phone: '13312345678',
@@ -118,7 +120,7 @@ export default {
           province: '北京市',
           city: '北京市',
           district: '朝阳区',
-          postcode: '100124',
+          postal_code: '100124',
           detail:'南磨房镇 平乐园100号 北京工业大学',
           name: '刘珺瑶',
           phone: '13387654321',
@@ -135,20 +137,23 @@ export default {
       this.address.push({province: this.addForm.addProvince,
         city: this.addForm.addCity,
         district: this.addForm.addDistrict,
-        postcode: this.addForm.addDetail,
+        postal_code: this.addForm.addPostcode,
         detail: this.addForm.addDetail,
         name: this.addForm.addName,
         phone: this.addForm.addPhone,
         email: this.addForm.addEmail
       })
       this.showAddInfoBox = false;
-      fetch('http://127.0.0.1:5000/address', {
+      fetch('http://127.0.0.1:5000/address/add', {
         method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           province: this.address[this.address.length - 1].addProvince,
           city: this.address[this.address.length - 1].addCity,
           district: this.address[this.address.length - 1].addDistrict,
-          postcode: this.address[this.address.length - 1].addPostcode,
+          postal_code: this.address[this.address.length - 1].addPostcode,
           detail: this.address[this.address.length - 1].addDetail,
           name: this.address[this.address.length - 1].addName,
           phone: this.address[this.address.length - 1].addPhone,
@@ -157,9 +162,16 @@ export default {
       })
           .then(x => x.json())
           .then(x => {
-            this.address = x.address;
+            this.address = x;
           });
     },
+  },
+  mounted() {
+    fetch(`http://${ipAddress}/address/get`)
+        .then(x => x.json())
+        .then(x => {
+          this.address = x;
+        });
   }
 }
 </script>

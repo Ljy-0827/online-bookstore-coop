@@ -636,7 +636,17 @@ export default {
     },
     enterChange(){
       console.log(this.userSearch);
-      this.$router.push('/search_result');
+      fetch('http://${ipAddress}/search-result', {
+        method: 'post',
+        body: JSON.stringify({
+          keyword: this.userSearch,
+        }),
+      })
+          .then(x => x.json())
+          .then(x => {
+            this.searchResultBooks = x.searchResult;
+          });
+      this.$router.push({name: 'search-result', params: {keyword: this.userSearch}});
     }
   },
   mounted(){
