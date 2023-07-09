@@ -9,17 +9,17 @@
       </div>
       <div class="form-wrapper">
         <el-form :model="userLoginInfo" label-width="80px" label-position="top">
-          <el-form-item label="邮箱" class="form-item" v-model="userLoginInfo.email">
-            <el-input class="form-input"></el-input>
+          <el-form-item label="邮箱" class="form-item">
+            <el-input class="form-input" v-model="userLoginInfo.email"></el-input>
           </el-form-item>
-          <el-form-item label="密码" class="form-item" v-model="userLoginInfo.password">
-            <el-input class="form-input"></el-input>
+          <el-form-item label="密码" class="form-item">
+            <el-input class="form-input" v-model="userLoginInfo.password"></el-input>
           </el-form-item>
           <el-form-item>
             <div class="forget-password">忘记密码？</div>
           </el-form-item>
           <el-form-item class="form-button">
-            <el-button class="submit-button">确认登录</el-button>
+            <el-button class="submit-button" @click="this.submitLogin">确认登录</el-button>
           </el-form-item>
         </el-form>
         <div class="no-account" style="display: inline-flex">
@@ -47,6 +47,7 @@
 
 <script>
 import {getImageUrl} from "@/utils/utils.js";
+import {ipAddress} from "@/utils/utils.js";
 
 export default {
   name: "UserLogin",
@@ -80,6 +81,17 @@ export default {
         this.userStyle = 'color: #333333';
         this.adminStyle = 'color: #65156C';
       }
+    },
+
+    submitLogin(){
+      fetch('http://${ipAddress}/login/0', {
+        method: 'post',
+        body: JSON.stringify({
+          email: this.userLoginInfo.email,
+          password: this.userLoginInfo.password,
+        }),
+      })
+      this.$router.push('/');
     }
   },
   onMounted(){

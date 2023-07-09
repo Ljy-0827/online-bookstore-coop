@@ -310,6 +310,7 @@
 
 <script>
 import {getImageUrl} from "@/utils/utils.js";
+import {ipAddress} from "@/utils/utils.js";
 
 export default {
   name: "user-cart",
@@ -446,7 +447,7 @@ export default {
         this.transportFeeCondition = "不包含运费";
       }
 
-      fetch('http://127.0.0.1:5000/cart', {
+      fetch('http://${ipAddress}/cart', {
         method: 'post',
         body: JSON.stringify({
           isbn: this.cartBook[index].isbn,

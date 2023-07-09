@@ -9,17 +9,17 @@
       </div>
       <div class="form-wrapper">
         <el-form :model="userLoginInfo" label-width="80px" label-position="top">
-          <el-form-item label="邮箱" class="form-item" v-model="userLoginInfo.email">
-            <el-input class="form-input"></el-input>
+          <el-form-item label="邮箱" class="form-item">
+            <el-input class="form-input" v-model="userLoginInfo.email"></el-input>
           </el-form-item>
-          <el-form-item label="密码" class="form-item" v-model="userLoginInfo.password">
-            <el-input class="form-input"></el-input>
+          <el-form-item label="密码" class="form-item">
+            <el-input class="form-input" v-model="userLoginInfo.password"></el-input>
           </el-form-item>
           <el-form-item>
             <div class="forget-password">忘记密码？</div>
           </el-form-item>
           <el-form-item class="form-button">
-            <el-button class="submit-button">确认登录</el-button>
+            <el-button class="submit-button" @click="this.submitLogin">确认登录</el-button>
           </el-form-item>
         </el-form>
         <div class="no-account" style="display: inline-flex">
@@ -29,11 +29,11 @@
       </div>
 
       <div class="login-switch">
-        <div class="user-login" :style="userStyle" @click="this.$router.push('/login/0')">
+        <div class="user-login" :style="userStyle" @click="this.onSwitchToUserLogin">
           平台用户登录
         </div>
         <el-divider direction="vertical"></el-divider>
-        <div class="admin-login" :style="adminStyle" @click="this.$router.push('/login/1')">
+        <div class="admin-login" :style="adminStyle" @click="this.onSwitchToAdminLogin">
           管理员登录
         </div>
       </div>
@@ -47,6 +47,7 @@
 
 <script>
 import {getImageUrl} from "@/utils/utils.js";
+import {ipAddress} from "@/utils/utils.js";
 
 export default {
   name: "UserLogin",
@@ -61,14 +62,40 @@ export default {
       isAdmin: true,
     }
   },
-  onMounted(){
-    if(!this.isAdmin){
-      this.userStyle = 'color: #65156C';
-      this.adminStyle = 'color: #333333';
-    }else{
-      this.userStyle = 'color: #333333';
-      this.adminStyle = 'color: #65156C';
+  methods:{
+    onSwitchToUserLogin(){
+      this.$router.push('/login/0');
+      this.isAdmin = false;
+      this.changeColor();
+    },
+    onSwitchToAdminLogin(){
+      this.$router.push('/login/1');
+      this.isAdmin = true;
+      this.changeColor();
+    },
+    changeColor(){
+      if(!this.isAdmin){
+        this.userStyle = 'color: #65156C';
+        this.adminStyle = 'color: #333333';
+      }else{
+        this.userStyle = 'color: #333333';
+        this.adminStyle = 'color: #65156C';
+      }
+    },
+
+    submitLogin(){
+      fetch('http://${ipAddress}/login/1', {
+        method: 'post',
+        body: JSON.stringify({
+          email: this.userLoginInfo.email,
+          password: this.userLoginInfo.password,
+        }),
+      })
+      this.$router.push('/');
     }
+  },
+  onMounted(){
+    this.changeColor();
   },
   setup(){
     function getImage(url) {
