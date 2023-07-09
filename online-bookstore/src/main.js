@@ -15,6 +15,7 @@ import UserAccount from "@/components/UserAccount.vue";
 import UserOrder from "@/components/UserOrder.vue";
 import UserInfo from "@/components/UserInfo.vue";
 import UserAddress from "@/components/UserAddress.vue";
+import UserLogin from "@/components/UserLogin.vue";
 
 const myRouter = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,6 +38,16 @@ const myRouter = createRouter({
             path: '/cart',
             name: 'cart',
             component: UserCart
+        },
+        {
+            path: '/login/0',
+            name: 'user_login',
+            component: UserLogin
+        },
+        {
+            path: '/login/1',
+            name: 'admin_login',
+            component: UserLogin
         },
         {
             path: '/account',
