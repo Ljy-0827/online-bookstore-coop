@@ -14,6 +14,7 @@ import UserCart from "@/components/UserCart.vue";
 import UserAccount from "@/components/UserAccount.vue";
 import UserOrder from "@/components/UserOrder.vue";
 import UserInfo from "@/components/UserInfo.vue";
+import UserAddress from "@/components/UserAddress.vue";
 
 const myRouter = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,7 +50,12 @@ const myRouter = createRouter({
                 path: 'info',
                 name: 'info',
                 component: UserInfo
-            }]
+            },
+                {
+                    path:'address',
+                    name:'address',
+                    component: UserAddress,
+                }]
         },
 
     ]
