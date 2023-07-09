@@ -232,7 +232,7 @@ export default {
           })
               .then(x => x.json())
               .then(x => {
-                this.userForm = x.info;
+                this.userForm = x;
               });
         } else{
           console.log("fail");
@@ -246,7 +246,7 @@ export default {
       })
           .then(x => x.json())
           .then(x => {
-            this.userForm = x.info;
+            this.userForm = x;
           });
     }
   },
