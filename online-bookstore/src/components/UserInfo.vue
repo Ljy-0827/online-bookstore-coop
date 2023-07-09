@@ -4,7 +4,7 @@
     <div class="top-left">
       <div class="panel-title">会员积分</div>
       <div class="point-box">
-        <div class="user-point">{{this.point}}</div>
+        <div class="user-point">{{this.userForm.point}}</div>
         <div class="user-point-chn">积分点数</div>
           <div class="point-info">
             <div class="point-info-title">等级</div>
@@ -64,6 +64,8 @@
 </template>
 
 <script>
+import {ipAddress} from "@/utils/utils.js";
+
 export default {
   name: "UserInfo",
   data(){
@@ -72,23 +74,82 @@ export default {
       grade: '铜级会员',
       right1:'加入会员即可周期性获得优惠券',
       right2:'加入会员积累积分，升级以获取更多优惠',
-      userForm: {id: '3537612548', name: '赵子钰', phone: '13312345678', email: 'zhaoziyu@bjut.edu.cn'},
+      userForm: {id: '3537612548', name: '赵子钰', phone: '13312345678', email: 'zhaoziyu@bjut.edu.cn', point: 158},
       isBanned: true,
       isModify: false,
-      couponInfo:[{
-        title: '满100-15',
-        startDate: '2023.07.01',
-        endDate: '2023.09.30',
-        isGet: false,
-      },
+      couponInfo:[],
+      couponInfoBronze:[
         {
-          title: '满100-15',
+          title: '单笔订单9折',
           startDate: '2023.07.01',
           endDate: '2023.09.30',
           isGet: false,
         },
         {
-          title: '满100-15',
+          title: '单笔订单9折',
+          startDate: '2023.07.01',
+          endDate: '2023.09.30',
+          isGet: false,
+        },
+        {
+          title: '免配送费',
+          startDate: '2023.07.01',
+          endDate: '2023.09.30',
+          isGet: false,
+        },
+        {
+          title: '免配送费',
+          startDate: '2023.07.01',
+          endDate: '2023.09.30',
+          isGet: false,
+        }
+      ],
+      couponInfoSilver:[
+          {
+        title: '单笔订单9折',
+        startDate: '2023.07.01',
+        endDate: '2023.09.30',
+        isGet: false,
+      },
+        {
+          title: '单笔订单9折',
+          startDate: '2023.07.01',
+          endDate: '2023.09.30',
+          isGet: false,
+        },
+        {
+          title: '免配送费',
+          startDate: '2023.07.01',
+          endDate: '2023.09.30',
+          isGet: false,
+        },
+        {
+          title: '免配送费',
+          startDate: '2023.07.01',
+          endDate: '2023.09.30',
+          isGet: false,
+        },
+        {
+          title: '免配送费',
+          startDate: '2023.07.01',
+          endDate: '2023.09.30',
+          isGet: false,
+        }],
+      couponInfoGold:[
+        {
+          title: '单笔订单8.5折',
+          startDate: '2023.07.01',
+          endDate: '2023.09.30',
+          isGet: false,
+        },
+        {
+          title: '单笔订单8.5折',
+          startDate: '2023.07.01',
+          endDate: '2023.09.30',
+          isGet: false,
+        },
+        {
+          title: '免配送费',
           startDate: '2023.07.01',
           endDate: '2023.09.30',
           isGet: false,
@@ -115,29 +176,32 @@ export default {
         name: {required: true, message: '请输入用户名', trigger: 'blur'},
         phone:[{required: true, message: '请输入手机号码', trigger: 'blur'},
           {pattern: /(^((\+86)|(86))?(1[3-9])\d{9}$)| (^(0\d{2,3})-?(\d{7,8})$)/ , message:'请输入正确的手机号', trigger: 'blur'}],
-        email:[{required: true, message: '请输入手机号码', trigger: 'blur'},
+        email:[{required: true, message: '请输入电子邮箱', trigger: 'blur'},
           {pattern:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9_\.\-])+\.)+([a-zA-Z0-9]{2,4})+$/, message: '请输入正确的邮箱', trigger: 'blur'}]
       }
     }
   },
   methods: {
     gradeCalculate(){
-      if(this.point === 0){
+      if(this.userForm.point === 0){
         this.grade = '您尚未成为会员';
         this.right1 = '加入会员即可周期性获得优惠券';
         this.right2 = '加入会员积累积分，升级以获取更多优惠';
-      }else if(this.point > 0 && this.point <= 100){
+      }else if(this.userForm.point > 0 && this.userForm.point <= 100){
         this.grade = '铜级会员';
-        this.right1 = '每季度可以领取2张满200-20优惠券';
+        this.right1 = '每季度可以领取2张单笔订单9.5折优惠券';
         this.right2 = '每季度可以享受2次免运费配送服务';
-      }else if(this.point > 100 && this.point <= 200){
+        this.couponInfo = this.couponInfoBronze;
+      }else if(this.userForm.point > 100 && this.userForm.point <= 200){
         this.grade = '银级会员';
-        this.right1 = '每季度可以领取2张满100-15优惠券';
+        this.right1 = '每季度可以领取2张单笔订单9折优惠券';
         this.right2 = '每季度可以享受3次免运费配送服务';
+        this.couponInfo = this.couponInfoSilver;
       }else{
         this.grade = '金级会员';
-        this.right1 = '每季度可以领取4张订单八折优惠券';
+        this.right1 = '每季度可以领取2张单笔订单8.5这折优惠券';
         this.right2 = '每季度可以享受4次免运费配送服务';
+        this.couponInfo = this.couponInfoGold;
       }
     },
     onModifyInfo(){
@@ -155,14 +219,39 @@ export default {
           console.log("success");
           this.isModify = false;
           this.isBanned = true;
+          fetch(`http://${ipAddress}/account/info`, {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username: this.userForm.name,
+              phone:this.userForm.phone,
+              email:this.userForm.email,
+            }),
+          })
+              .then(x => x.json())
+              .then(x => {
+                this.userForm = x.info;
+              });
         } else{
           console.log("fail");
           return false;
         }
       })
     },
+    firstFetch(){
+      fetch(`http://${ipAddress}/account/info`, {
+        method: 'get',
+      })
+          .then(x => x.json())
+          .then(x => {
+            this.userForm = x.info;
+          });
+    }
   },
   mounted() {
+    this.firstFetch();
     this.gradeCalculate();
   }
 }
