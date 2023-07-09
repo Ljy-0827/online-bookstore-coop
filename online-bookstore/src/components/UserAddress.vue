@@ -162,7 +162,7 @@ export default {
       })
           .then(x => x.json())
           .then(x => {
-            this.address = x;
+            this.address = x.addresses;
           });
     },
   },
@@ -170,7 +170,7 @@ export default {
     fetch(`http://${ipAddress}/address/get`)
         .then(x => x.json())
         .then(x => {
-          this.address = x;
+          this.address = x.addresses;
         });
   }
 }
