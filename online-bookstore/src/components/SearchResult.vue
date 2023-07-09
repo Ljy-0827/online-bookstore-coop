@@ -3,7 +3,7 @@
     <el-affix>
       <div style="display: inline-flex; background-color: white">
         <div style="width: 150px; height: 56px;">
-          <el-image :src="getImage('/setting-png/logo-icon')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+          <el-image :src="getImage('/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
         </div>
         <div class="header-left-menu">
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
@@ -46,7 +46,7 @@
                   </el-button>
                 </div>
                 <div class="hover-expand-left-box-bookcover">
-                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/loreolympus')">
+                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/loreolympus.png')">
                 </div>
               </el-carousel-item>
               <el-carousel-item>
@@ -57,7 +57,7 @@
                   </el-button>
                 </div>
                 <div class="hover-expand-left-box-bookcover">
-                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/diqitian')">
+                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/diqitian.png')">
                 </div>
               </el-carousel-item>
             </div>
