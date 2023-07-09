@@ -225,7 +225,7 @@ export default {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              username: this.userForm.name,
+              name: this.userForm.name,
               phone:this.userForm.phone,
               email:this.userForm.email,
             }),
