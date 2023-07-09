@@ -196,10 +196,10 @@
       <div class="book-container" style="background-color: transparent">
         <div class="book-item-container" v-for="item in searchResultBooks" :key="item">
           <div class="book-item-cover-wrapper">
-            <img class="book-item-cover-pic" :src="item.cover">
+            <img class="book-item-cover-pic" :src="item.coverURL">
           </div>
           <div class="book-item-title">
-            {{item.name}}
+            {{item.title}}
           </div>
           <div class="book-item-info">
             {{item.author}}, {{item.publishYear}}
@@ -209,7 +209,7 @@
               <el-icon size="17" style="margin-top: 3px; margin-right: 3px">
                 <StarFilled style="color: #F4AE4B;"/>
               </el-icon>
-              {{item.rate}}
+              {{item.rating}}
             </div>
             <div class="book-price">
               ￥{{item.singlePrice.toFixed(2)}}
@@ -271,12 +271,15 @@
 
 <script>
 import {getImageUrl} from "@/utils/utils.js";
+import {ipAddress} from "@/utils/utils.js";
+import {useRoute} from "vue-router";
 
 export default {
   name: "SearchResult",
   data(){
     return{
       userSearchInput:'',
+      keyWord: '',
       collapseActiveNames:['category','language'],
       rateCollapse:[1.0,2.0,3.0,4.0],
       userSearch:'',
@@ -313,107 +316,107 @@ export default {
       ],
       searchResultBooks:[
         {
-          cover: getImageUrl("book-covers/haibiandekafuka"),
-          name: "海边的卡夫卡",
+          coverURL: getImageUrl("book-covers/haibiandekafuka.png"),
+          title: "海边的卡夫卡",
           author: "[日] 村上春树",
           publishYear: "2018",
-          rate: 4.1,
+          rating: 4.1,
           singlePrice: 59.00,
         },
         {
-          cover: getImageUrl("book-covers/nuoweidesenlin"),
-          name: "挪威的森林",
+          coverURL: getImageUrl("book-covers/nuoweidesenlin.png"),
+          title: "挪威的森林",
           author: "[日] 村上春树",
           publishYear: "2018",
-          rate: 4.1,
+          rating: 4.1,
           singlePrice: 59.00,
         },
         {
-          cover: getImageUrl("book-covers/qimao"),
-          name: "弃猫：当我谈起父亲时",
+          coverURL: getImageUrl("book-covers/qimao.png"),
+          title: "弃猫：当我谈起父亲时",
           author: "[日] 村上春树",
           publishYear: "2021",
-          rate: 3.7,
+          rating: 3.7,
           singlePrice: 48.00,
         },
         {
-          cover: getImageUrl("/book-covers/qietingfengyin"),
-          name: "且听风吟",
+          coverURL: getImageUrl("/book-covers/qietingfengyin.png"),
+          title: "且听风吟",
           author: "[日] 村上春树",
           publishYear: "2018",
-          rate: 3.8,
+          rating: 3.8,
           singlePrice: 28.00,
         },
         {
-          cover: getImageUrl("book-covers/cishaqishituanzhang"),
-          name: "刺杀骑士团长",
+          coverURL: getImageUrl("book-covers/cishaqishituanzhang.png"),
+          title: "刺杀骑士团长",
           author: "[日] 村上春树",
           publishYear: "2018",
-          rate: 3.8,
+          rating: 3.8,
           singlePrice: 98.00,
         },
         {
-          cover: getImageUrl("book-covers/meiyousecaideduoqizuo"),
-          name: "没有色彩的多崎作和他的巡礼之年",
+          coverURL: getImageUrl("book-covers/meiyousecaideduoqizuo.png"),
+          title: "没有色彩的多崎作和他的巡礼之年",
           author: "[日] 村上春树",
           publishYear: "2013",
-          rate: 3.8,
+          rating: 3.8,
           singlePrice: 39.50,
         },
         {
-          cover: getImageUrl("book-covers/wodezhiyeshixiaoshuojia"),
-          name: "我的职业是小说家",
+          coverURL: getImageUrl("book-covers/wodezhiyeshixiaoshuojia.png"),
+          title: "我的职业是小说家",
           author: "[日] 村上春树",
           publishYear: "2017",
-          rate: 4.1,
+          rating: 4.1,
           singlePrice: 45,
         },
         {
-          cover: getImageUrl("book-covers/liekexingdundeyouling"),
-          name: "列克星敦的幽灵",
+          coverURL: getImageUrl("book-covers/liekexingdundeyouling.png"),
+          title: "列克星敦的幽灵",
           author: "[日] 村上春树",
           publishYear: "2021",
-          rate: 3.6,
+          rating: 3.6,
           singlePrice: 45,
         },
         {
-          cover: getImageUrl("book-covers/yudaobaifenzhibaidenvhai"),
-          name: "遇到百分之百的女孩",
+          coverURL: getImageUrl("book-covers/yudaobaifenzhibaidenvhai.png"),
+          title: "遇到百分之百的女孩",
           author: "[日] 村上春树",
           publishYear: "2021",
-          rate: 3.7,
+          rating: 3.7,
           singlePrice: 48,
         },
         {
-          cover: getImageUrl("book-covers/quzhongguodexiaochuan"),
-          name: "去中国的小船",
+          coverURL: getImageUrl("book-covers/quzhongguodexiaochuan.png"),
+          title: "去中国的小船",
           author: "[日] 村上春树",
           publishYear: "2021",
-          rate: 3.7,
+          rating: 3.7,
           singlePrice: 52,
         },
         {
-          cover: getImageUrl("book-covers/shendehaiziquantiaowu"),
-          name: "神的孩子全跳舞",
+          coverURL: getImageUrl("book-covers/shendehaiziquantiaowu.png"),
+          title: "神的孩子全跳舞",
           author: "[日] 村上春树",
           publishYear: "2021",
-          rate: 3.8,
+          rating: 3.8,
           singlePrice: 48,
         },
         {
-          cover: getImageUrl("book-covers/wuwuwu"),
-          name: "舞！舞！舞！",
+          coverURL: getImageUrl("book-covers/wuwuwu.png"),
+          title: "舞！舞！舞！",
           author: "[日] 村上春树",
           publishYear: "2018",
-          rate: 4.2,
+          rating: 4.2,
           singlePrice: 52,
         },
         {
-          cover: getImageUrl("book-covers/yijiuqisanniandetanziqiu"),
-          name: "1973年的弹子球",
+          coverURL: getImageUrl("book-covers/yijiuqisanniandetanziqiu.png"),
+          title: "1973年的弹子球",
           author: "[日] 村上春树",
           publishYear: "2018",
-          rate: 3.6,
+          rating: 3.6,
           singlePrice: 37,
         },
       ]
@@ -440,25 +443,44 @@ export default {
       this.showExpandCollection = false;
     },
     enterChange(){
-      
-      fetch("http://127.0.0.1:5000/back-end-data.json")
+      fetch('http://${ipAddress}/search-result', {
+        method: 'post',
+        body: JSON.stringify({
+          keyword: this.userSearchInput,
+        }),
+      })
           .then(x => x.json())
           .then(x => {
-            this.searchResultBooks = x.searchResult; //searchResult是json文件对的数组
-            console.log(this.searchResultBooks)
-          });    
-       
-
-      console.log(this.userSearch);
-      this.$router.push('/search_result');
+            this.searchResultBooks = x.searchResult;
+          });
     },
 
+  },
+  onMounted(){
+    /*
+    fetch('http://${ipAddress}/search-result', {
+      method: 'post',
+      body: JSON.stringify({
+        keyword: this.keyword,
+      }),
+    })
+        .then(x => x.json())
+        .then(x => {
+          this.searchResultBooks = x.searchResult;
+        });
+
+     */
   },
   setup(){
     function getImage(url) {
       return getImageUrl(url);
     }
+    /*
+    const route = useRoute();
+    this.keyword = route.params.keyword;
 
+
+     */
     return {
       getImage
     }
