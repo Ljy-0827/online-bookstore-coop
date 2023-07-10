@@ -642,6 +642,9 @@ export default {
       console.log(this.userSearch);
       fetch(`http://${ipAddress}/search-result`, {
         method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           keyword: this.userSearch,
         }),
