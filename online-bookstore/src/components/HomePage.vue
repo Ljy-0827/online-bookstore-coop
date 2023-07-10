@@ -9,11 +9,8 @@
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
             全部分类
           </div>
-          <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCollection()" @mouseleave="onMouseOutExpandCollection">
-            图书榜单
-          </div>
-          <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCollection()" @mouseleave="onMouseOutExpandCollection">
-            折扣专区
+          <div class="hover-expand-menu-item" v-show="isLoggedIn" @click="toMyCart()">
+            我的购物车
           </div>
         </div>
 
@@ -660,13 +657,16 @@ export default {
     pageTransfer(){
       this.$router.push({name: `${this.pageTransferRoute}`, params: {userId: this.userId}});
     },
+    toMyCart(){
+      this.$router.push({name: 'cart', params: {userId: this.userId}})
+    }
   },
   mounted(){
 
     fetch(`http://${ipAddress}/user`)
         .then(x => x.json())
         .then(x => {
-          this.userId = x.userID;
+          this.userId = x.id;
           if(this.userId === ''){
             this.isLoggedIn = false;
             this.pageTransferRoute = 'user_login';

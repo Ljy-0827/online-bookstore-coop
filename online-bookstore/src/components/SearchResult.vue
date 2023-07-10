@@ -222,7 +222,7 @@
               </button>
             </div>
             <div class="book-button-addtocart">
-              <button class="book-button-style">
+              <button class="book-button-style" @click="this.onAddToCart">
                 加入购物车
               </button>
             </div>
@@ -460,6 +460,20 @@ export default {
 
   },
   onMounted(){
+    this.keyword = this.$route.params.keyword;
+    fetch(`http://${ipAddress}/search-result`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        keyword: this.keyword,
+      }),
+    })
+        .then(x => x.json())
+        .then(x => {
+          this.searchResultBooks = x.searchResult;
+        });
     /*
     fetch('http://${ipAddress}/search-result', {
       method: 'post',
@@ -478,12 +492,6 @@ export default {
     function getImage(url) {
       return getImageUrl(url);
     }
-    /*
-    const route = useRoute();
-    this.keyword = route.params.keyword;
-
-
-     */
     return {
       getImage
     }
