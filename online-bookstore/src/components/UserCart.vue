@@ -435,7 +435,6 @@ export default {
       }else{
         this.transportFeeCondition = "不包含运费";
       }
-      console.log(this.selectedISBN);
     },
 
     selectNumChangeHandler(index){
@@ -505,7 +504,18 @@ export default {
 
   },
   mounted() {
-  },
+      fetch(`http://${ipAddress}/cart`, {
+        method: 'get',
+      })
+          .then(x => x.json())
+          .then(x => {
+            this.cartBook = x;
+            for(let i = 0; i < this.cartBook.length; i++){
+              this.cartBook[i].isSelected = false;
+            }
+          });
+    },
+
   setup(){
     function getImage(url) {
       return getImageUrl(url);
