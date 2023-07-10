@@ -666,7 +666,7 @@ export default {
     fetch(`http://${ipAddress}/user`)
         .then(x => x.json())
         .then(x => {
-          this.userId = x.id;
+          this.userId = x.userID;
           if(this.userId === ''){
             this.isLoggedIn = false;
             this.pageTransferRoute = 'user_login';
