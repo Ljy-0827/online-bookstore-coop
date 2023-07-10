@@ -172,10 +172,57 @@
       <div class="hover-expand-wrapper" v-show=this.showExpandCollection @mouseenter="onMouseOverExpandCollection"  @mouseleave="onMouseOutExpandCollection"></div>
     </el-affix>
   </el-header>
+  <el-main style="display: inline-flex; padding: 0">
+    <div class="main-left">
+      <div class="order-title">
+        订单详情
+      </div>
+      <div class="order-wrapper" v-for="order in orderData" :key="order">
+        <div class="order-item" v-for="item in order.orderBooks" :key="item">
+          <div class="cover-box">
+            <img :src="item.coverURL" class="book-cover"/>
+          </div>
+          <div class="info-box">
+            <div class="book-title">{{item.title}}</div>
+            <div class="book-author">{{item.author}}</div>
+            <div class="book-price">￥{{item.singlePrice}} x{{item.num}}， 小计：￥{{(item.singlePrice * item.num).toFixed(2)}}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="main-right">
+      <div class="order-title" style="margin-left: 0">
+        收货地址选择
+      </div>
+      <div class="address-wrapper">
+        <el-radio-group v-model="this.selectedAddress">
+          <el-radio v-for="item in addresses" :key="item" :label="item.id" style="margin-top: 20px">
+            <div class="radio-box" style="display: block; margin-left: 1vw">
+              <div class="radio-top">
+                {{item.province}} {{item.city}} {{item.district}} {{item.detail}}
+              </div>
+              <div class="radio-bottom">
+                {{item.name}} {{item.phone}} {{item.email}}
+              </div>
+            </div>
+          </el-radio>
+        </el-radio-group>
+      </div>
+      <div class="order-title" style="margin-left: 0;">
+        选择支付方式
+      </div>
+      <el-radio-group v-model="this.payType">
+        <el-radio label="wechat">微信支付</el-radio>
+        <el-radio label="alipay">支付宝支付</el-radio>
+      </el-radio-group>
+      <el-button @click="onSubmitPayment">确认支付</el-button>
+    </div>
+  </el-main>
 </template>
 
 <script>
-import {getImageUrl} from "@/utils/utils.js";
+import {getImageUrl, ipAddress} from "@/utils/utils.js";
 
 export default {
   name: "CheckOut",
@@ -186,6 +233,46 @@ export default {
       showExpandCategory: false,
       showExpandCollection: false,
       collectionBookRecommend: [],
+      selectedAddress: '',
+      orderData:[{
+        id:'12343',
+        orderBooks: [{
+          coverURL: getImageUrl("../assets/book-covers/haibiandekafuka.png"),
+          title: '海边的卡夫卡',
+          author: '村上春树',
+          singlePrice: '58.00',
+          num: 2,
+        },
+          {
+            coverURL: getImageUrl("../assets/book-covers/nuoweidesenlin.png"),
+            title: '挪威的森林',
+            author: '村上春树',
+            singlePrice: '58.00',
+            num: 1,
+          }],
+        totalNum: '2',
+        totalPrice: '',
+      }],
+      addresses:[{
+        province: '北京市',
+        city: '北京市',
+        district: '朝阳区',
+        detail: '平乐园100号 北京工业大学',
+        name: '赵子钰',
+        phone: '13312345678',
+        email: 'zhaoziyu@emails.bjut.edu.cn',
+        id: '1',
+      },
+        {
+          province: '北京市',
+          city: '北京市',
+          district: '海淀区',
+          detail: '海淀大悦城',
+          name: '赵子钰',
+          phone: '13312345678',
+          email: 'zhaoziyu@emails.bjut.edu.cn',
+          id: '124',
+        }]
     }
   },
   methods:{
@@ -208,6 +295,27 @@ export default {
     onMouseOutExpandCollection(){
       this.showExpandCollection = false;
     },
+    onSubmitPayment(){
+      fetch(`http://${ipAddress}/pay_order`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: this.selectedAddress,
+        }),
+      })
+      this.$router.push('/');
+    }
+  },
+  mounted() {
+    fetch(`http://${ipAddress}/get_current_order`, {
+      method: 'get',
+    })
+        .then(x => x.json())
+        .then(x => {
+          this.orderData = x.order;
+        });
   },
   setup(){
     function getImage(url) {

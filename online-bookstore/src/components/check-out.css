@@ -182,6 +182,92 @@
 }
 
 
+.main-left{
+    width: 53vw;
+    height: 40vw;
+    display: block;
+    background-color: lavenderblush;
+}
+
+.order-title{
+    margin-left: 36px;
+    font-size: 18px;
+    font-weight: 450;
+    color: #333333;
+}
+
+.order-wrapper{
+    display: block;
+    margin-left: 36px;
+}
+
+.order-item{
+    display: inline-flex;
+    height: 10vw;
+    width: 46vw;
+    margin-top: 1.5vw;
+}
+
+.info-box{
+    display: block;
+    width: 34vw;
+    margin-left: 1vw;
+    padding-left: 2vw;
+    border: solid 1px #E1DEE7;
+    border-radius: 8px;
+}
+
+.book-title{
+    color: #65156C;
+    margin-top: 18px;
+    font-size: 15px;
+    font-weight: 450;
+}
+
+.book-author{
+    color: #333333;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.book-price{
+    color: #333333;
+    font-size: 14px;
+    margin-top: 34px;
+    margin-left: -2px;
+}
+
+.cover-box{
+    width: 10vw;
+    height: 10vw;
+    border-radius: 10px;
+    background-color: #FAFAFC;
+    border: solid 1px #E1DEE7;
+}
+
+.book-cover{
+    height: 8vw;
+    margin-top: 1vw;
+    margin-left: calc((10vw - 5.2vw) / 2);
+    border-radius: 6px;
+}
+
+.main-right{
+    width: 46vw;
+    height: 40vw;
+    background-color: lightyellow;
+}
+
+.address-wrapper{
+    margin-top: 1.5vw;
+    border: solid 1px #E1DEE7;
+    border-radius: 10px;
+    width: 40vw;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 3vw;
+}
+
 @media screen and (max-width: 1100px) {
     .hover-expand-right-box {
         width: 796px;
