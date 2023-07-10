@@ -639,7 +639,7 @@ export default {
       this.showExpandCollection = false;
     },
     enterChange(){
-      console.log(this.userSearch);
+      /*
       fetch(`http://${ipAddress}/search-result`, {
         method: 'post',
         headers: {
@@ -653,6 +653,8 @@ export default {
           .then(x => {
             this.searchResultBooks = x.searchResult;
           });
+
+       */
       this.$router.push({name: 'search-result', params: {keyword: this.userSearch}});
     },
     pageTransfer(){
