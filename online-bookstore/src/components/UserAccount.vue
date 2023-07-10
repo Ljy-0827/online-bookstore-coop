@@ -9,12 +9,6 @@
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
             全部分类
           </div>
-          <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCollection()" @mouseleave="onMouseOutExpandCollection">
-            图书榜单
-          </div>
-          <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCollection()" @mouseleave="onMouseOutExpandCollection">
-            折扣专区
-          </div>
         </div>
         <div class="header-searchbar-container">
           <el-input class="header-searchbar" v-model="userSearchInput" placeholder="搜索ISBN编号、书名或作者名" @keyup.enter.native="this.enterChange">
@@ -27,9 +21,8 @@
         <div class="header-login-signup-container">
           <el-button class="button-primary-general" id="login-button" style="margin-top: 12px">
             <i class="bi bi-person-fill" style="margin-right: 4px;"></i>
-            立即登录
+            我的账号
           </el-button>
-          <a class="sign-up-text">新用户注册</a>
         </div>
       </div>
 
@@ -189,7 +182,7 @@
           <el-menu-item index="3" @click="this.$router.push('/account/address')">收货地址管理</el-menu-item>
           <el-menu-item index="4" id="last-menu-item">优惠券</el-menu-item>
         </el-menu>
-        <button class="logout-button">登出</button>
+        <button class="logout-button" @click="onLogOut">登出</button>
       </div>
     </div>
     <RouterView class="router-view">
@@ -199,7 +192,7 @@
 </template>
 
 <script>
-import {getImageUrl} from "@/utils/utils.js";
+import {getImageUrl, ipAddress} from "@/utils/utils.js";
 
 export default {
   name: "UserAccount",
@@ -235,6 +228,10 @@ export default {
       console.log(this.userSearch);
       this.$router.push('/search_result');
     },
+    onLogOut(){
+      fetch(`http://${ipAddress}/logout`)
+          .then(this.$router.push('/'));
+    }
   },
   mounted() {
 
