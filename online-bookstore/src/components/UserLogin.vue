@@ -40,7 +40,7 @@
 
     </div>
     <div class="right">
-      <img :src="getImage('/setting-png/login-background')" class="login-background-img"/>
+      <img :src="getImage('../assets/setting-png/login-background.png')" class="login-background-img"/>
     </div>
   </div>
 </template>
@@ -48,6 +48,7 @@
 <script>
 import {getImageUrl} from "@/utils/utils.js";
 import {ipAddress} from "@/utils/utils.js";
+import { ElMessage } from 'element-plus'
 
 export default {
   name: "UserLogin",
@@ -57,6 +58,12 @@ export default {
         email:'',
         password: '',
       },
+
+      loginResult:{
+        id: '',
+        status: '',
+      },
+
       adminStyle: 'color: #333333',
       userStyle: 'color: #65156C',
       isAdmin: false,
@@ -84,14 +91,27 @@ export default {
     },
 
     submitLogin(){
-      fetch('http://${ipAddress}/login/0', {
+      fetch(`http://${ipAddress}/login/0`, {
         method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           email: this.userLoginInfo.email,
           password: this.userLoginInfo.password,
         }),
       })
-      this.$router.push('/');
+          .then(x => x.json())
+          .then(x => {
+            this.loginResult = x;
+          });
+      if(this.loginResult.status === 1){
+        this.$router.push('/');
+      }else if(this.loginResult.status === -1){
+        ElMessage.error('用户不存在');
+      }else if(this.loginResult.status === 0){
+        ElMessage.error('密码错误');
+      }
     }
   },
   onMounted(){
