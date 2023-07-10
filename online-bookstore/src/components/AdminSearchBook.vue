@@ -44,7 +44,6 @@
                 link
                 type="primary"
                 size="small"
-                @click.prevent="this.deleteRow(scope.$index)"
                 >
                   修改库存
                 </el-button>
