@@ -1,0 +1,41 @@
+.right-content{
+    display: block;
+    width: 74vw;
+}
+
+.content-title{
+    color: #333333;
+    font-weight: 450;
+    margin-bottom: 2vw;
+}
+
+.search-input-wrapper{
+    display: inline-flex;
+}
+
+.search-text{
+    width: 120px;
+    font-size: 14px;
+    line-height: 32px;
+    color: #333333;
+}
+
+.search-input{
+    width: 30vw;
+}
+
+.search-button{
+    margin-left: 18px;
+}
+
+.table-wrapper{
+    margin-top: 3vw;
+}
+
+:deep .el-table .el-table__row{
+    font-size: 12px;
+}
+
+:deep .el-table .el-table__header th{
+    font-size: 13px;
+}

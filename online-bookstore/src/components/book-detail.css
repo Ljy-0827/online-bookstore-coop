@@ -1,0 +1,449 @@
+/*------HEADER------*/
+.header-wrapper{
+    height: 56px;
+    padding: 0;
+}
+
+.header-left-menu{
+    width: calc(100vw - 340px - 6vw - 20px);
+    height: 56px;
+    display: inline-flex;
+}
+
+.header-searchbar-container{
+    width: 6vw;
+    height: 56px;
+    margin-right: 20px;
+}
+
+.header-searchbar{
+    width: 260px;
+    height: 32px;
+    float: right;
+    margin-top: 12px;
+    border-color: #65156C;
+}
+
+.header-login-signup-container{
+    width: 170px;
+    padding-right: 8px;
+    height: 56px;
+    display: inline-flex;
+}
+
+.button-primary-general{
+    background-color: #65156C;
+    color: white;
+    border-color: #65156C;
+}
+
+.button-primary-general:hover{
+    background-color: #f5f3f6;
+    border-color: #65156C;
+    color: #65156C;
+}
+
+#login-button{
+    font-weight: 500;
+    font-size: 12px;
+    height: 32px;
+    width: 90px;
+    border-radius: 6px;
+}
+
+.sign-up-text{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 54px;
+    margin: 0 0 0 14px;
+    padding: 0;
+    color: #65156C;
+}
+
+.sign-up-text:hover{
+    font-weight: 700;
+}
+
+.hover-expand-wrapper{
+    position: absolute;
+    z-index: 100;
+    width: calc(100vw - 40px);
+    height: 374px;
+    margin-left: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+}
+
+.hover-expand-menu-item{
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #A091B2;
+    line-height: 54px;
+    font-size: 12px;
+}
+
+.hover-expand-menu-item:hover{
+    color: #65156C;
+}
+
+.hover-expand-content-container{
+    display: inline-flex;
+}
+
+.hover-expand-left-box{
+    background-color: #ECF8FE;
+    width: 24vw;
+    height: 374px;
+    border-radius: 12px 0 0 12px;
+    display: block;
+    overflow: hidden;
+}
+
+.hover-expand-left-box-title{
+    font-family: "Songti SC";
+    font-size: 18px;
+    text-align: center;
+    color: #65156C;
+    margin-top: 20px;
+}
+
+.hover-expand-left-box-button{
+    margin-top: 18px;
+}
+
+.hover-expand-checknow-button{
+    margin-left: 32%;
+    font-weight: 400;
+    font-size: 12px;
+    height: 28px;
+    width: 36%;
+}
+
+.hover-expand-left-box-bookcover{
+    margin-top: 20px;
+    width: 76%;
+    margin-left: 12%;
+    height: auto;
+}
+
+.hover-expand-right-box{
+    width: calc(100vw - 40px - 24vw);
+    height: 374px;
+    border-radius: 0 12px 12px 0;
+    display: inline-flex;
+    background-color: white;
+}
+
+.hover-expand-right-box-col{
+    width: calc(25% - 54px);
+    height: 320px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 54px;
+}
+
+.hover-expand-right-box-title{
+    font-family: "Songti SC";
+    font-size: 17px;
+    color: #65156C;
+}
+
+.hover-expand-right-box-hint{
+    font-size: 12px;
+    color: #A091B2;
+    margin-top: 18px;
+}
+
+.hover-expand-right-box-item{
+    margin-top: 10px;
+    font-size: 13px;
+    color: #65156C;
+}
+
+.hover-expand-right-box-item:hover{
+    font-weight: 700;
+}
+
+.hover-expand-right-box-seemore{
+    margin-top: 22px;
+    color: #A091B2;
+    font-size: 12px;
+}
+
+.hover-expand-right-box-seemore:hover{
+    font-weight: 700;
+}
+
+
+::v-deep .el-input{
+    border-color: #65156C;
+}
+
+::v-deep .el-input .el-input__wrapper{
+    border-radius: 20px;
+}
+
+::v-deep .el-input .el-input__inner{
+    font-weight: 400;
+    font-size: 12px;
+    color: #65156C;
+}
+
+::v-deep .el-input {
+    --el-input-border-color: #65156C;
+    --el-input-hover-border-color: #A091B2;
+    --el-input-focus-border-color: #65156C;
+}
+
+.top-left{
+    width: 42vw;
+    height: auto;
+    margin-top: 1vw;
+}
+
+.cover-wrapper{
+    margin-left: 36px;
+    background-color: #FAFAFC;
+    border-radius: 12px;
+    width: 38vw;
+    height: 30vw;
+}
+
+.cover{
+    height: 22vw;
+    border-radius: 10px;
+
+}
+
+.small-images{
+    display: inline-flex;
+    margin-left: 36px;
+}
+
+.small-image-wrapper{
+    height: 6vw;
+    width: 8vw;
+    margin-top: 3vw;
+    background-color: #FAFAFC;
+    border-radius: 5px;
+    margin-right: 1vw;
+}
+
+.small-cover-pic{
+    height: 5vw;
+    margin-left: calc((100% - 3.25vw) / 2);
+    margin-top: 0.5vw;
+    border-radius: 2px;
+}
+
+.small-detail-pic{
+    height: 5vw;
+    margin-left: calc((100% - 5vw) / 2);
+    margin-top: 0.5vw;
+    border-radius: 2px;
+}
+
+.top-right{
+    display: block;
+    height: auto;
+    width: 54vw;
+    margin-left: 4vw;
+    margin-top: 1vw;
+}
+
+.book-title{
+    font-family: "Songti SC";
+    font-size: 28px;
+    margin-top: 1vw;
+    color: #65156C;
+}
+
+.author-box{
+    margin-top: 1vw;
+    display: inline-flex;
+}
+
+.author-text{
+    color: #65156C;
+    font-size: 14px;
+    font-weight: 450;
+}
+
+.translator-text{
+    color: #65156C;
+    font-size: 14px;
+    font-weight: 450;
+    margin-left: 30px;
+}
+
+.book-author{
+    margin-left: 12px;
+    font-size: 14px;
+    color: #333333;
+}
+
+.book-translator{
+    margin-left: 12px;
+    font-size: 14px;
+    color: #333333;
+}
+
+.rating-box{
+    margin-top: 1vw;
+}
+
+.price-box{
+    margin-top: 3.5vw;
+}
+
+.price-text{
+    font-size: 12px;
+    color: #333333;
+}
+
+.book-price{
+    color: #65156C;
+    font-size: 24px;
+    font-weight: 450;
+    margin-top: 4px;
+}
+
+.add-to-cart-button{
+    background-color: #65156C;
+    color: white;
+    width: 140px;
+    height: 36px;
+    font-size: 14px;
+    border: solid 1px #65156C;
+    border-radius: 8px;
+    margin-top: 1.5vw;
+}
+
+.intro-box-small{
+    font-size: 13px;
+    color: #333333;
+    width: 50vw;
+    line-height: 23px;
+
+}
+
+.content-box{
+    display: block;
+    margin-top: 3vw;
+}
+
+.quote-box{
+    font-size: 13px;
+    color: #333333;
+    width: 50vw;
+    line-height: 23px;
+    font-weight: 450;
+}
+
+.read-more-button{
+    color: #65156C;
+    font-size: 13px;
+    margin-left: 6px;
+}
+
+.read-more-box{
+    display: inline-flex;
+    margin-top: 10px;
+}
+
+.author-info-box{
+    margin-top: 2vw;
+    width: 50vw;
+    height: 6.6vw;
+    background-color: #F5F3F6;
+    border-radius: 8px;
+}
+
+.author-img{
+    margin-top: 1vw;
+    margin-left: 2vw;
+    height: 4.6vw;
+    border-radius: 8px;
+}
+
+.book-box{
+    display: inline-flex;
+}
+
+.book-right-box{
+    display: block;
+    width: 10vw;
+    height: auto;
+}
+
+.read-online-img{
+    width: 9vw;
+    margin-left: 10px;
+}
+
+.read-online-button{
+    background-color: #65156C;
+    color: white;
+    border-radius: 6px;
+    margin-top: 0.6vw;
+    width: 100px;
+    margin-left: 18px;
+}
+
+.book-left-box{
+    display: block;
+    width: 43vw;
+}
+
+:deep .el-rate .el-rate__icon{
+    color: #65156C;
+}
+
+:deep .el-rate .el-rate__text{
+    margin-top: 1px;
+    color: #65156C;
+}
+
+.author-name{
+    font-family: "Songti SC";
+    color: #65156C;
+    line-height: 6.6vw;
+    margin-left: 28px;
+    width: 200px;
+}
+
+.see-more-author{
+    color: #9F92B0;
+    font-size: 13px;
+    line-height: 6.6vw;
+    display: inline-flex;
+    width: 150px;
+    margin-left: calc(50vw - (6.6vw + 200px + 150px + 60px));
+}
+
+.see-more-author-icon{
+    margin-top: calc((6.6vw - 13px) / 2);
+    margin-left: 6px;
+}
+
+@media screen and (max-width: 1100px){
+    .hover-expand-right-box{
+        width: 796px;
+    }
+
+    .hover-expand-left-box{
+        width: 264px;
+    }
+
+    .hover-expand-wrapper{
+        width: 1100px;
+    }
+
+    .header-left-menu{
+        width: 674px;
+    }
+
+    .header-searchbar-container{
+        width: 66px;
+    }
+}

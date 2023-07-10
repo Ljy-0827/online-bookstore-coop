@@ -3,7 +3,7 @@
     <el-affix>
       <div style="display: inline-flex; background-color: white">
         <div style="width: 150px; height: 56px;">
-          <el-image :src="getImage('/setting-png/logo-icon')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+          <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
         </div>
         <div class="header-left-menu">
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
@@ -250,13 +250,13 @@
 
           <div class="total-price">
             <div class="item-total-price">
-              ￥{{(item.singlePrice * item.itemNum).toFixed(2)}}
+              ￥{{(item.singlePrice * item.itemNum)}}
             </div>
           </div>
 
           <div class="options">
             <div class="item-delete">
-              <button class="option-text-button">删除</button>
+              <button class="option-text-button" @click="this.deleteItemChangeHandler(index)">删除</button>
             </div>
             <div class="item-move">
               <button class="option-text-button">移入收藏夹</button>
@@ -295,12 +295,12 @@
           <div class="cart-total-price" style="padding: 0">
             总价：
             <div class="cart-total-price-num">
-              ￥{{this.cartTotalPrice.toFixed(2)}}
+              ￥{{this.cartTotalPrice}}
             </div>
           </div>
           <div style="font-size: 12px; line-height: 58px;">（{{ this.transportFeeCondition }}）</div>
           <div class="checkout-button-wrapper">
-            <button class="checkout-button">结算</button>
+            <button class="checkout-button" @click="this.onSubmitCart">结算</button>
           </div>
         </div>
       </div>
@@ -321,11 +321,12 @@ export default {
       showExpandCategory: false,
       showExpandCollection: false,
       collectionBookRecommend: [],
+      selectedBooks:[],
       isSelectAll: false,
       cartSelectCount: 0,
       cartTotalPrice: 0,
       transportFeeCondition: "不包含运费",
-      cartBook: [{cover: getImageUrl("book-covers/xiaowangzidiancangban"),
+      cartBook: [{cover: getImageUrl("../assets/book-covers/xiaowangzidiancangban.png"),
         name: "《小王子》出版80周年MINI珍藏版（定制版）",
         author: "[法] 安托万·德·圣埃克苏佩里",
         publisher: "湖南文艺出版社",
@@ -336,7 +337,7 @@ export default {
         isbn: '9787572607981',
         isSelected: false,
       },
-        {cover: getImageUrl("book-covers/yunbianyougexiaomaibu"),
+        {cover: getImageUrl("../assets/book-covers/yunbianyougexiaomaibu.png"),
           name: "云边有个小卖部",
           author: "张嘉佳",
           publisher: "湖南文艺出版社",
@@ -347,7 +348,7 @@ export default {
           isbn: '9787540487645',
           isSelected: false,
         },
-        {cover: getImageUrl("book-covers/huoluanshiqideaiqing"),
+        {cover: getImageUrl("../assets/book-covers/huoluanshiqideaiqing.png"),
           name: "霍乱时期的爱情",
           author: "[哥伦比亚] 加西亚·马尔克斯",
           publisher: "南海出版公司",
@@ -358,7 +359,7 @@ export default {
           isbn: '9787544297059',
           isSelected: false,
         },
-        {cover: getImageUrl("book-covers/beixizidu"),
+        {cover: getImageUrl("../assets/book-covers/beixizidu.png"),
           name: "悲喜自渡",
           author: "季羡林",
           publisher: "江苏凤凰文艺出版社",
@@ -369,7 +370,7 @@ export default {
           isbn: '9787559436658',
           isSelected: false,
         },
-        {cover: getImageUrl("book-covers/fangsiqidechulianleyuan"),
+        {cover: getImageUrl("../assets/book-covers/fangsiqidechulianleyuan.png"),
           name: "房思琪的初恋乐园",
           author: "林奕含",
           publisher: "北京联合出版公司",
@@ -419,10 +420,12 @@ export default {
     selectSingleChangeHandler(){
       let tmpCnt = 0;
       let tmpTotal = 0;
+      this.selectedBooks = [];
       for(let i = 0; i < this.cartBook.length; i++){
         if(this.cartBook[i].isSelected){
           tmpCnt ++;
           tmpTotal += this.cartBook[i].itemNum * this.cartBook[i].singlePrice;
+          this.selectedBooks.push({isbn: this.cartBook[i].isbn, num: this.cartBook[i].itemNum});
         }
       }
       this.cartSelectCount = tmpCnt;
@@ -432,7 +435,9 @@ export default {
       }else{
         this.transportFeeCondition = "不包含运费";
       }
+      console.log(this.selectedISBN);
     },
+
     selectNumChangeHandler(index){
       let tmpTotal = 0;
       for(let i = 0; i < this.cartBook.length; i++){
@@ -447,8 +452,11 @@ export default {
         this.transportFeeCondition = "不包含运费";
       }
 
-      fetch('http://${ipAddress}/cart', {
+      fetch(`http://${ipAddress}/cart/num_change`, {
         method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           isbn: this.cartBook[index].isbn,
           itemNum: this.cartBook[index].num,
@@ -458,8 +466,38 @@ export default {
           .then(x => {
             this.cartBook = x.cartBook;
           });
-          console.log(this.cartBook)
+          console.log(this.cartBook);
     },
+
+    deleteItemChangeHandler(index){
+      fetch(`http://${ipAddress}/cart/delete`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          isbn: this.cartBook[index].isbn,
+        }),
+      })
+          .then(x => x.json())
+          .then(x => {
+            this.cartBook = x.cartBook;
+          });
+    },
+
+    onSubmitCart(){
+      fetch(`http://${ipAddress}/cart/submit`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          submitBooks: this.selectedBooks,
+        }),
+      })
+      //this.$router.push({name: 'checkout', params: {itemISBN: this.selectedISBN}});
+    },
+
     enterChange(){
       console.log(this.userSearchInput);
       this.$router.push('/search_result');

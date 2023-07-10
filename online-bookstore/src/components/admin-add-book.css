@@ -1,0 +1,39 @@
+.right-content{
+    display: block;
+}
+
+.content-title{
+    color: #333333;
+    font-weight: 450;
+    margin-bottom: 2vw;
+    margin-left: 2vw;
+}
+
+.right-content{
+    width: 60vw;
+}
+
+.single-line-item{
+    width: 52.3vw;
+    margin-left: 2vw;
+    margin-bottom: 2vw;
+}
+
+.inline-item{
+    width: 24vw;
+    margin-left: 2vw;
+    margin-bottom: 2vw;
+}
+
+.submit-button{
+    margin-left: calc(2vw + 24vw - 100px - 76px - 18px);
+    width: 100px;
+    background-color: #65156C;
+    border-color: #65156C;
+    color: white;
+}
+
+.reset-button{
+    width: 76px;
+    margin-left: 18px;
+}

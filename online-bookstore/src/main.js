@@ -16,6 +16,10 @@ import UserOrder from "@/components/UserOrder.vue";
 import UserInfo from "@/components/UserInfo.vue";
 import UserAddress from "@/components/UserAddress.vue";
 import UserLogin from "@/components/UserLogin.vue";
+import AdminControl from "@/components/AdminControl.vue";
+import AdminAddBook from "@/components/AdminAddBook.vue";
+import AdminSearchBook from "@/components/AdminSearchBook.vue";
+import BookDetail from "@/components/BookDetail.vue";
 
 const myRouter = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,12 +46,31 @@ const myRouter = createRouter({
         {
             path: '/login/0',
             name: 'user_login',
-            component: UserLogin
+            component: UserLogin,
         },
         {
             path: '/login/1',
             name: 'admin_login',
-            component: UserLogin
+            component: UserLogin,
+        },
+        {
+            path: '/detail',
+            name: 'detail',
+            component: BookDetail,
+        },
+        {
+            path: '/admin_control',
+            name: 'admin-control',
+            component: AdminControl,
+            children:[{
+                path: 'add_book',
+                name: 'add_book',
+                component: AdminAddBook,
+            },{
+                path: 'search_book',
+                name: 'search_book',
+                component: AdminSearchBook,
+            }]
         },
         {
             path: '/account',
