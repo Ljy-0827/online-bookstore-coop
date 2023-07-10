@@ -91,7 +91,7 @@ export default {
     },
 
     submitLogin(){
-      fetch(`http://${ipAddress}/login/0`, {
+      fetch(`http://${ipAddress}/login`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -104,14 +104,15 @@ export default {
           .then(x => x.json())
           .then(x => {
             this.loginResult = x;
+            if(this.loginResult.status === 1){
+              this.$router.push('/');
+            }else if(this.loginResult.status === -1){
+              ElMessage.error('用户不存在');
+            }else if(this.loginResult.status === 0){
+              ElMessage.error('密码错误');
+            }
           });
-      if(this.loginResult.status === 1){
-        this.$router.push('/');
-      }else if(this.loginResult.status === -1){
-        ElMessage.error('用户不存在');
-      }else if(this.loginResult.status === 0){
-        ElMessage.error('密码错误');
-      }
+
     }
   },
   onMounted(){

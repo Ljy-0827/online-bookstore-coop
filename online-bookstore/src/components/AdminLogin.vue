@@ -84,7 +84,7 @@ export default {
     },
 
     submitLogin(){
-      fetch('http://${ipAddress}/login/1', {
+      fetch('http://${ipAddress}/login', {
         method: 'post',
         body: JSON.stringify({
           email: this.userLoginInfo.email,
