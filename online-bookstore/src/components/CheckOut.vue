@@ -209,6 +209,21 @@
           </el-radio>
         </el-radio-group>
       </div>
+      <div class="order-title" style="margin-left: 0">
+        优惠券选择
+      </div>
+      <el-radio-group v-model="selectedCoupon" @change="onCouponChange">
+        <el-radio v-for="item in coupons" :key="item" :label="item.id">
+          {{item.name}}
+        </el-radio>
+      </el-radio-group>
+      <div class="order-title" style="margin-left: 0">
+        订单价格
+      </div>
+      <div class="total-price">
+        ￥{{this.priceAfterCoupon}}
+      </div>
+
       <div class="order-title" style="margin-left: 0;">
         选择支付方式
       </div>
@@ -234,6 +249,8 @@ export default {
       showExpandCollection: false,
       collectionBookRecommend: [],
       selectedAddress: '',
+      selectedCoupon: '',
+      priceAfterCoupon: '',
       orderData:[{
         id:'12343',
         orderBooks: [{
@@ -251,7 +268,7 @@ export default {
             num: 1,
           }],
         totalNum: '2',
-        totalPrice: '',
+        totalPrice: '4346',
       }],
       addresses:[{
         province: '北京市',
@@ -272,6 +289,18 @@ export default {
           phone: '13312345678',
           email: 'zhaoziyu@emails.bjut.edu.cn',
           id: '124',
+        }],
+      coupons:[{
+        name: '整笔订单9.5折',
+        id: '9512345'
+      },
+        {
+          name: '整笔订单9折',
+          id: '9013245'
+        },
+        {
+          name: '整笔订单8.5折',
+          id:'854321432',
         }]
     }
   },
@@ -302,10 +331,24 @@ export default {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id: this.selectedAddress,
+          AddressId: this.selectedAddress,
+          CouponId: this.selectedCoupon,
+          totalPrice: this.priceAfterCoupon,
         }),
       })
       this.$router.push('/');
+    },
+    onCouponChange(){
+      this.priceAfterCoupon = this.orderData[0].totalPrice;
+      let firstTwoDigits = this.selectedCoupon.substring(0, 2); // 获取前两个字符
+
+      if (firstTwoDigits === "95") {
+        this.priceAfterCoupon = this.priceAfterCoupon * 0.95;
+      } else if(firstTwoDigits === "90") {
+        this.priceAfterCoupon = this.priceAfterCoupon * 0.9;
+      }else if(firstTwoDigits === "85"){
+        this.priceAfterCoupon = this.priceAfterCoupon * 0.85;
+      }
     }
   },
   mounted() {
@@ -316,6 +359,21 @@ export default {
         .then(x => {
           this.orderData = x.order;
         });
+    fetch(`http://${ipAddress}/address/get`, {
+      method: 'get',
+    })
+        .then(x => x.json())
+        .then(x => {
+          this.addresses = x.addresses;
+        });
+    fetch(`http://${ipAddress}/get_coupon`, {
+      method: 'get',
+    })
+        .then(x => x.json())
+        .then(x => {
+          this.coupons = x.coupons;
+        });
+    this.priceAfterCoupon = this.orderData[0].totalPrice;
   },
   setup(){
     function getImage(url) {
