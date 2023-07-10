@@ -9,6 +9,9 @@
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
             全部分类
           </div>
+          <div class="hover-expand-menu-item" @click="toCart">
+            我的购物车
+          </div>
         </div>
         <div class="header-searchbar-container">
           <el-input class="header-searchbar" v-model="userSearchInput" placeholder="搜索ISBN编号、书名或作者名" @keyup.enter.native="this.enterChange">
@@ -231,6 +234,9 @@ export default {
     onLogOut(){
       fetch(`http://${ipAddress}/logout`)
           .then(this.$router.push('/'));
+    },
+    toCart(){
+      this.$router.push('/cart');
     }
   },
   mounted() {
