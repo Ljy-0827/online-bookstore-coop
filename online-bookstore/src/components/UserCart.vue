@@ -463,7 +463,7 @@ export default {
       })
           .then(x => x.json())
           .then(x => {
-            this.cartBook = x.cartBook;
+            this.cartBook = x.books;
           });
           console.log(this.cartBook);
     },
@@ -480,7 +480,7 @@ export default {
       })
           .then(x => x.json())
           .then(x => {
-            this.cartBook = x.cartBook;
+            this.cartBook = x.books;
           });
     },
 
@@ -504,12 +504,12 @@ export default {
 
   },
   mounted() {
-      fetch(`http://${ipAddress}/cart`, {
+      fetch(`http://${ipAddress}/get_user_cart`, {
         method: 'get',
       })
           .then(x => x.json())
           .then(x => {
-            this.cartBook = x;
+            this.cartBook = x.books;
             for(let i = 0; i < this.cartBook.length; i++){
               this.cartBook[i].isSelected = false;
             }
