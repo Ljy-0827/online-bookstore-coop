@@ -184,9 +184,8 @@
 
 .main-left{
     width: 53vw;
-    height: 40vw;
     display: block;
-    background-color: lavenderblush;
+    margin-top: 2vw;
 }
 
 .order-title{
@@ -254,8 +253,7 @@
 
 .main-right{
     width: 46vw;
-    height: 40vw;
-    background-color: lightyellow;
+    margin-top: 2vw;
 }
 
 .address-wrapper{
@@ -264,8 +262,89 @@
     border-radius: 10px;
     width: 40vw;
     padding-left: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
     margin-bottom: 3vw;
+}
+
+.coupon-wrapper{
+    margin-top: 1.5vw;
+    border: solid 1px #E1DEE7;
+    border-radius: 10px;
+    width: 40vw;
+    padding-left: 20px;
+    margin-bottom: 3vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+}
+
+.payment-wrapper{
+    margin-top: 1.5vw;
+    border: solid 1px #E1DEE7;
+    border-radius: 10px;
+    width: 18vw;
+    padding-left: 20px;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+}
+
+.coupon-item{
+    font-weight: 400;
+    font-size: 13px;
+    color: #333333;
+}
+
+.payment-radio{
+    font-weight: 400;
+    font-size: 13px;
+    color: #333333;
+}
+
+.total-price{
+    color: #65156C;
+    font-weight: 450;
+    font-size: 24px;
+    margin-top: 2vw;
+    margin-bottom: 3vw;
+}
+
+.price-and-pay{
+    width: 50vw;
+}
+
+.pay-button{
+    background-color: #65156C;
+    color: white;
+    border: solid 1px #65156C;
+    border-radius: 8px;
+    height: 40px;
+    width: 126px;
+}
+
+.payment{
+    margin-left: 5vw;
+}
+
+:deep .el-radio{
+    --el-radio-input-border-color-hover: #65156C;
+}
+
+:deep .el-radio__input.is-checked .el-radio__inner {
+    border-color: #65156C;
+    background: #65156C;
+}
+
+.radio-top{
+    font-size: 13px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 22px;
+}
+
+.radio-bottom{
+    font-size: 13px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 22px;
 }
 
 @media screen and (max-width: 1100px) {

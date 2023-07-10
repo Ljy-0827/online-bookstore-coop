@@ -4,4 +4,4 @@ export function getImageUrl(name) {
     return a;
 }
 
-export const ipAddress = '127.0.0.1:5000';
+export const ipAddress = '10.26.74.167:5000';

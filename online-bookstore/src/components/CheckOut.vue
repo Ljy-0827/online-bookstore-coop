@@ -197,7 +197,7 @@
       </div>
       <div class="address-wrapper">
         <el-radio-group v-model="this.selectedAddress">
-          <el-radio v-for="item in addresses" :key="item" :label="item.id" style="margin-top: 20px">
+          <el-radio v-for="item in addresses" :key="item" :label="item.id" style="margin-top: 24px">
             <div class="radio-box" style="display: block; margin-left: 1vw">
               <div class="radio-top">
                 {{item.province}} {{item.city}} {{item.district}} {{item.detail}}
@@ -212,26 +212,36 @@
       <div class="order-title" style="margin-left: 0">
         优惠券选择
       </div>
-      <el-radio-group v-model="selectedCoupon" @change="onCouponChange">
-        <el-radio v-for="item in coupons" :key="item" :label="item.id">
-          {{item.name}}
-        </el-radio>
-      </el-radio-group>
+      <div class="coupon-wrapper">
+        <el-radio-group v-model="selectedCoupon" @change="onCouponChange">
+          <el-radio v-for="item in coupons" :key="item" :label="item.id">
+            <div class="coupon-item">{{item.name}}</div>
+          </el-radio>
+        </el-radio-group>
+      </div>
+      <div class="price-and-pay" style="display: inline-flex">
+    <div class="price" style="display:block;">
       <div class="order-title" style="margin-left: 0">
         订单价格
       </div>
       <div class="total-price">
         ￥{{this.priceAfterCoupon}}
       </div>
-
+    </div>
+    <div class="payment" style="display: block">
       <div class="order-title" style="margin-left: 0;">
         选择支付方式
       </div>
-      <el-radio-group v-model="this.payType">
-        <el-radio label="wechat">微信支付</el-radio>
-        <el-radio label="alipay">支付宝支付</el-radio>
-      </el-radio-group>
-      <el-button @click="onSubmitPayment">确认支付</el-button>
+      <div class="payment-wrapper">
+        <el-radio-group v-model="this.payType">
+          <el-radio label="wechat"><div class="payment-radio">微信支付</div></el-radio>
+          <el-radio label="alipay"><div class="payment-radio">支付宝支付</div></el-radio>
+        </el-radio-group>
+      </div>
+
+    </div>
+</div>
+      <el-button @click="onSubmitPayment" class="pay-button">确认支付</el-button>
     </div>
   </el-main>
 </template>
@@ -243,6 +253,7 @@ export default {
   name: "CheckOut",
   data(){
     return {
+      payType:'',
       userSearchInput: '',
       showExpand: false,
       showExpandCategory: false,
@@ -268,7 +279,7 @@ export default {
             num: 1,
           }],
         totalNum: '2',
-        totalPrice: '4346',
+        totalPrice: '174.00',
       }],
       addresses:[{
         province: '北京市',
@@ -343,11 +354,11 @@ export default {
       let firstTwoDigits = this.selectedCoupon.substring(0, 2); // 获取前两个字符
 
       if (firstTwoDigits === "95") {
-        this.priceAfterCoupon = this.priceAfterCoupon * 0.95;
+        this.priceAfterCoupon = (this.priceAfterCoupon * 0.95).toFixed(2);
       } else if(firstTwoDigits === "90") {
-        this.priceAfterCoupon = this.priceAfterCoupon * 0.9;
+        this.priceAfterCoupon = (this.priceAfterCoupon * 0.9).toFixed(2);
       }else if(firstTwoDigits === "85"){
-        this.priceAfterCoupon = this.priceAfterCoupon * 0.85;
+        this.priceAfterCoupon = (this.priceAfterCoupon * 0.85).toFixed(2);
       }
     }
   },
