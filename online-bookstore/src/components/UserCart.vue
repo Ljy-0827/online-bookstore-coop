@@ -487,7 +487,8 @@ export default {
           submitBooks: this.selectedBooks,
         }),
       })
-      //this.$router.push({name: 'checkout', params: {itemISBN: this.selectedISBN}});
+
+      this.$router.push('/check_out');
     },
 
     enterChange(){
