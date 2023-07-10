@@ -652,7 +652,8 @@ export default {
           });
 
        */
-      this.$router.push({name: 'search-result', params: {keyword: this.userSearch}});
+
+      this.$router.push({name: 'search_result', query: {word: `${this.userSearch}`}});
     },
     pageTransfer(){
       this.$router.push({name: `${this.pageTransferRoute}`, params: {userId: this.userId}});

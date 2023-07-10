@@ -272,7 +272,6 @@
 <script>
 import {getImageUrl} from "@/utils/utils.js";
 import {ipAddress} from "@/utils/utils.js";
-import {useRoute} from "vue-router";
 
 export default {
   name: "SearchResult",
@@ -459,8 +458,10 @@ export default {
     },
 
   },
-  onMounted(){
-    this.keyword = this.$route.params.keyword;
+  mounted(){
+    console.log(this.$route.query.word);
+    this.keyword = this.$route.query.word;
+
     fetch(`http://${ipAddress}/search-result`, {
       method: 'post',
       headers: {
