@@ -3,7 +3,7 @@
     <el-affix>
       <div style="display: inline-flex; background-color: white">
         <div style="width: 150px; height: 56px;">
-          <el-image :src="getImage('/setting-png/logo-icon')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+          <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
         </div>
         <div class="header-left-menu">
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
@@ -18,11 +18,11 @@
         </div>
 
         <div class="header-login-signup-container">
-          <el-button class="button-primary-general" id="login-button" style="margin-top: 12px">
+          <el-button class="button-primary-general" id="login-button" style="margin-top: 12px" @click="pageTransfer()">
             <i class="bi bi-person-fill" style="margin-right: 4px;"></i>
-            立即登录
+            {{this.buttonText}}
           </el-button>
-          <a class="sign-up-text">新用户注册</a>
+          <a class="sign-up-text" v-show="!this.isLoggedIn">新用户注册</a>
         </div>
       </div>
 
@@ -39,7 +39,7 @@
                   </el-button>
                 </div>
                 <div class="hover-expand-left-box-bookcover">
-                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/loreolympus')">
+                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('../assets/book-covers/loreolympus.png')">
                 </div>
               </el-carousel-item>
               <el-carousel-item>
@@ -50,7 +50,7 @@
                   </el-button>
                 </div>
                 <div class="hover-expand-left-box-bookcover">
-                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/diqitian')">
+                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('../assets/book-covers/diqitian.png')">
                 </div>
               </el-carousel-item>
             </div>
@@ -489,38 +489,42 @@
 </template>
 
 <script>
-import {getImageUrl} from "@/utils/utils.js";
+import {getImageUrl, ipAddress} from "@/utils/utils.js";
 import { ElButton } from 'element-plus';
 export default {
   name: "HomePage",
   data(){
     return{
+      userId:'',
+      pageTransferRoute:'user_login',
+      isLoggedIn: false,
+      buttonText: '立即登录',
       userSearch:'',
       showExpand: false,
       showExpandCategory: false,
       showExpandCollection: false,
-      sign1: getImageUrl('setting-png/sign1'),
-      sign2: getImageUrl('setting-png/sign2'),
+      sign1: getImageUrl('../assets/setting-png/sign1.png'),
+      sign2: getImageUrl('../assets/setting-png/sign2.png'),
       quoteBooks:[{
-        cover: getImageUrl('book-covers/nishiwobujidemeng'),
+        cover: getImageUrl('../assets/book-covers/nishiwobujidemeng.png'),
         author: "三毛",
         title: "你是我不及的梦",
         quote: "总而言之，那种灯火阑珊处的蓦然回首，至今想来仍是感动的。这件事情不来则已，一来便立即粉身碎骨，当年不顾一切的爱恋和燃烧，是一个年轻生命中极为必须的经验和明证，证明了一刹永恒的真实存在与价值。",
       },
         {
-          cover: getImageUrl('book-covers/xueguo'),
+          cover: getImageUrl('../assets/book-covers/xueguo.png'),
           author: "[日] 川端康成",
           title: "雪国",
           quote: "叶子的声音美得不胜悲凉，美到消散了温度。纯粹的声音从纷扰琐碎的时光中穿越而来，从生到死，从盎然走向衰亡，镜中的影响，结霜的车窗。",
         },
         {
-          cover: getImageUrl('book-covers/changandelizhi'),
+          cover: getImageUrl('../assets/book-covers/changandelizhi.png'),
           author: "马伯庸",
           title: "长安的荔枝",
           quote: "此事起于贵妃一句无心感叹，终于贵妃的一声轻笑。自始至终，大家都围着贵妃极力兜转，眼中不及其余。至于朝廷法度，就像个整脚的龟兹乐班，远远地隔着一层薄纱，为这盛大的胡旋舞做着伴奏。",
         },
         {
-          cover: getImageUrl('book-covers/diqitian'),
+          cover: getImageUrl('../assets/book-covers/diqitian.png'),
           author: "余华",
           title: "第七天",
           quote: "我们走在寂静里，这个寂静的名字叫死亡。我们不再说话，那是因为我们的记忆不再前行。这是隔世记忆，斑驳陆离，虚无又真实。",
@@ -528,75 +532,75 @@ export default {
       bookNotesCovers:[],
       collectionBookCovers: [],
       collectionBookPrices: [],
-      HomepageBackground: getImageUrl('setting-png/background'),
+      HomepageBackground: getImageUrl('../assets/setting-png/background.png'),
       monthlyBooks:[{
-        cover: getImageUrl('book-covers/ruxuerushan'),
+        cover: getImageUrl('../assets/book-covers/ruxuerushan.png'),
         title: "如雪如山",
         author: "张天翼",
         rate: 4.2
       },
         {
-          cover: getImageUrl('book-covers/xunhuoyushiluo'),
+          cover: getImageUrl('../assets/book-covers/xunhuoyushiluo.png'),
           title: "寻获与失落",
           author: "[美] 厄休拉·勒古恩",
           rate: 4.5
         },
         {
-          cover: getImageUrl('book-covers/jianshang'),
+          cover: getImageUrl('../assets/book-covers/jianshang.png'),
           title: "翦商：殷周之变与华夏新生",
           author: "李硕",
           rate: 4.5
         },
         {
-          cover: getImageUrl('book-covers/zaijianhuili'),
+          cover: getImageUrl('../assets/book-covers/zaijianhuili.png'),
           title: "再见绘梨",
           author: "[日] 藤本树",
           rate: 4.5
         },
         {
-          cover: getImageUrl('book-covers/nidangxiangniaofeiwangnideshan'),
+          cover: getImageUrl('../assets/book-covers/nidangxiangniaofeiwangnideshan.png'),
           title: "你当像鸟飞往你的山",
           author: "[美] 塔拉·韦斯特弗",
           rate: 4.3
         },
         {
-          cover: getImageUrl('book-covers/kelakesendenongchang'),
+          cover: getImageUrl('../assets/book-covers/kelakesendenongchang.png'),
           title: "克拉克森的农场",
           author: "[英] 杰里米·克拉克森",
           rate: 4.1
         },
         {
-          cover: getImageUrl('book-covers/changandelizhi'),
+          cover: getImageUrl('../assets/book-covers/changandelizhi.png'),
           title: "长安的荔枝",
           author: "马伯庸",
           rate: 4.5
         },
         {
-          cover: getImageUrl('book-covers/ruguowomenwufayiguangsuqianxing'),
+          cover: getImageUrl('../assets/book-covers/ruguowomenwufayiguangsuqianxing.png'),
           title: "如果我们无法以光速前行",
           author: "[韩] 金草叶",
           rate: 4.5
         },
         {
-          cover: getImageUrl('book-covers/xunzhaobaiyoujie'),
+          cover: getImageUrl('../assets/book-covers/xunzhaobaiyoujie.png'),
           title: "寻找百优解",
           author: "陈百忧",
           rate: 4.5
         },
         {
-          cover: getImageUrl('book-covers/dayirichupian'),
+          cover: getImageUrl('../assets/book-covers/dayirichupian.png'),
           title: "大医 · 日出篇",
           author: "马伯庸",
           rate: 4.5
         },
         {
-          cover: getImageUrl('book-covers/twilight'),
+          cover: getImageUrl('../assets/book-covers/twilight.png'),
           title: "Twilight (The Twilight Saga)",
           author: "Stephenie Meyer",
           rate: 4.5
         },
         {
-          cover: getImageUrl('book-covers/wenroudeye'),
+          cover: getImageUrl('../assets/book-covers/wenroudeye.png'),
           title: "温柔的夜",
           author: "三毛",
           rate: 4.5
@@ -636,7 +640,7 @@ export default {
     },
     enterChange(){
       console.log(this.userSearch);
-      fetch('http://${ipAddress}/search-result', {
+      fetch(`http://${ipAddress}/search-result`, {
         method: 'post',
         body: JSON.stringify({
           keyword: this.userSearch,
@@ -647,10 +651,28 @@ export default {
             this.searchResultBooks = x.searchResult;
           });
       this.$router.push({name: 'search-result', params: {keyword: this.userSearch}});
-    }
+    },
+    pageTransfer(){
+      this.$router.push({name: `${this.pageTransferRoute}`, params: {userId: this.userId}});
+    },
   },
   mounted(){
-  }
+
+    fetch(`http://${ipAddress}/user`)
+        .then(x => x.json())
+        .then(x => {
+          this.userId = x.id;
+          if(this.userId === ''){
+            this.isLoggedIn = false;
+            this.pageTransferRoute = 'user_login';
+            this.buttonText = '立即登录';
+          }else{
+            this.isLoggedIn = true;
+            this.pageTransferRoute = 'info';
+            this.buttonText = '我的账号';
+          }
+        })
+    }
 }
 </script>
 
