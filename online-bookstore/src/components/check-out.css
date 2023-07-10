@@ -1,0 +1,205 @@
+.header-wrapper{
+    height: 56px;
+    padding: 0;
+}
+
+.header-left-menu{
+    width: calc(100vw - 550px);
+    height: 56px;
+    display: inline-flex;
+}
+
+.header-searchbar-container{
+    width: 260px;
+    height: 56px;
+    margin-right: 14px;
+}
+
+.header-searchbar{
+    width: 260px;
+    height: 32px;
+    float: right;
+    margin-top: 12px;
+    border-color: #65156C;
+}
+
+.header-login-signup-container{
+    width: 110px;
+    padding-right: 8px;
+    height: 56px;
+    display: inline-flex;
+}
+
+.button-primary-general{
+    background-color: #65156C;
+    color: white;
+    border-color: #65156C;
+}
+
+.button-primary-general:hover{
+    background-color: #f5f3f6;
+    border-color: #65156C;
+    color: #65156C;
+}
+
+#login-button{
+    font-weight: 500;
+    font-size: 12px;
+    height: 32px;
+    width: 90px;
+    border-radius: 6px;
+}
+
+.hover-expand-wrapper{
+    position: absolute;
+    z-index: 100;
+    width: calc(100vw - 40px);
+    height: 374px;
+    margin-left: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+}
+
+.hover-expand-menu-item{
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #A091B2;
+    line-height: 54px;
+    font-size: 12px;
+}
+
+.hover-expand-menu-item:hover{
+    color: #65156C;
+}
+
+.hover-expand-content-container{
+    display: inline-flex;
+}
+
+.hover-expand-left-box{
+    background-color: #ECF8FE;
+    width: 24vw;
+    height: 374px;
+    border-radius: 12px 0 0 12px;
+    display: block;
+    overflow: hidden;
+}
+
+.hover-expand-left-box-title{
+    font-family: "Songti SC";
+    font-size: 18px;
+    text-align: center;
+    color: #65156C;
+    margin-top: 20px;
+}
+
+.hover-expand-left-box-button{
+    margin-top: 18px;
+}
+
+.hover-expand-checknow-button{
+    margin-left: 32%;
+    font-weight: 400;
+    font-size: 12px;
+    height: 28px;
+    width: 36%;
+}
+
+.hover-expand-left-box-bookcover{
+    margin-top: 20px;
+    width: 76%;
+    margin-left: 12%;
+    height: auto;
+}
+
+.hover-expand-right-box{
+    width: calc(100vw - 40px - 24vw);
+    height: 374px;
+    border-radius: 0 12px 12px 0;
+    display: inline-flex;
+    background-color: white;
+}
+
+.hover-expand-right-box-col{
+    width: calc(25% - 54px);
+    height: 320px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 54px;
+}
+
+.hover-expand-right-box-title{
+    font-family: "Songti SC";
+    font-size: 17px;
+    color: #65156C;
+}
+
+.hover-expand-right-box-hint{
+    font-size: 12px;
+    color: #A091B2;
+    margin-top: 18px;
+}
+
+.hover-expand-right-box-item{
+    margin-top: 10px;
+    font-size: 13px;
+    color: #65156C;
+}
+
+.hover-expand-right-box-item:hover{
+    font-weight: 700;
+}
+
+.hover-expand-right-box-seemore{
+    margin-top: 22px;
+    color: #A091B2;
+    font-size: 12px;
+}
+
+.hover-expand-right-box-seemore:hover{
+    font-weight: 700;
+}
+
+
+::v-deep .el-input{
+    border-color: #65156C;
+}
+
+::v-deep .el-input .el-input__wrapper{
+    border-radius: 20px;
+}
+
+::v-deep .el-input .el-input__inner{
+    font-weight: 400;
+    font-size: 12px;
+    color: #65156C;
+}
+
+::v-deep .el-input {
+    --el-input-border-color: #65156C;
+    --el-input-hover-border-color: #A091B2;
+    --el-input-focus-border-color: #65156C;
+}
+
+
+@media screen and (max-width: 1100px) {
+    .hover-expand-right-box {
+        width: 796px;
+    }
+
+    .hover-expand-left-box {
+        width: 264px;
+    }
+
+    .hover-expand-wrapper {
+        width: 1100px;
+    }
+
+    .header-left-menu {
+        width: 674px;
+    }
+
+    .header-searchbar-container {
+        width: 260px;
+    }
+}
