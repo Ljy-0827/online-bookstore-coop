@@ -9,12 +9,10 @@
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
             全部分类
           </div>
-          <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCollection()" @mouseleave="onMouseOutExpandCollection">
-            图书榜单
+          <div class="hover-expand-menu-item" v-show="this.isLoggedIn">
+            我的购物车
           </div>
-          <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCollection()" @mouseleave="onMouseOutExpandCollection">
-            折扣专区
-          </div>
+
         </div>
         <div class="header-searchbar-container">
           <el-input class="header-searchbar" v-model="userSearchInput" placeholder="搜索ISBN编号、书名或作者名" @keyup.enter.native="this.enterChange">
@@ -25,11 +23,11 @@
         </div>
 
         <div class="header-login-signup-container">
-          <el-button class="button-primary-general" id="login-button" style="margin-top: 12px">
+          <el-button class="button-primary-general" id="login-button" style="margin-top: 12px" @click="pageTransfer()">
             <i class="bi bi-person-fill" style="margin-right: 4px;"></i>
-            立即登录
+            {{this.buttonText}}
           </el-button>
-          <a class="sign-up-text">新用户注册</a>
+          <a class="sign-up-text" v-show="!this.isLoggedIn">新用户注册</a>
         </div>
       </div>
 
@@ -194,11 +192,11 @@
     </div>
     <div class="content-container" style="display: inline-flex">
       <div class="book-container" style="background-color: transparent">
-        <div class="book-item-container" v-for="item in searchResultBooks" :key="item">
-          <div class="book-item-cover-wrapper">
+        <div class="book-item-container" v-for="(item, index) in searchResultBooks" :key="index">
+          <div class="book-item-cover-wrapper" @click="toDetail(index)">
             <img class="book-item-cover-pic" :src="item.coverURL">
           </div>
-          <div class="book-item-title">
+          <div class="book-item-title" @click="toDetail(index)">
             {{item.title}}
           </div>
           <div class="book-item-info">
@@ -222,7 +220,7 @@
               </button>
             </div>
             <div class="book-button-addtocart">
-              <button class="book-button-style" @click="this.onAddToCart">
+              <button class="book-button-style" @click="onAddToCart(index)">
                 加入购物车
               </button>
             </div>
@@ -272,11 +270,16 @@
 <script>
 import {getImageUrl} from "@/utils/utils.js";
 import {ipAddress} from "@/utils/utils.js";
+import { ElMessage } from 'element-plus'
 
 export default {
   name: "SearchResult",
   data(){
     return{
+      userId:'',
+      pageTransferRoute:'user_login',
+      isLoggedIn: false,
+      buttonText: '立即登录',
       userSearchInput:'',
       collapseActiveNames:['category','language'],
       rateCollapse:[1.0,2.0,3.0,4.0],
@@ -320,6 +323,7 @@ export default {
           publishYear: "2018",
           rating: 4.1,
           singlePrice: '59.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/nuoweidesenlin.png"),
@@ -328,6 +332,7 @@ export default {
           publishYear: "2018",
           rating: 4.1,
           singlePrice: '59.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/qimao.png"),
@@ -336,6 +341,7 @@ export default {
           publishYear: "2021",
           rating: 3.7,
           singlePrice: '48.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets//book-covers/qietingfengyin.png"),
@@ -344,6 +350,7 @@ export default {
           publishYear: "2018",
           rating: 3.8,
           singlePrice: '28.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/cishaqishituanzhang.png"),
@@ -352,6 +359,7 @@ export default {
           publishYear: "2018",
           rating: 3.8,
           singlePrice: '98.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/meiyousecaideduoqizuo.png"),
@@ -360,6 +368,7 @@ export default {
           publishYear: "2013",
           rating: 3.8,
           singlePrice: '39.50',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/wodezhiyeshixiaoshuojia.png"),
@@ -368,6 +377,7 @@ export default {
           publishYear: "2017",
           rating: 4.1,
           singlePrice: '45.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/liekexingdundeyouling.png"),
@@ -376,6 +386,7 @@ export default {
           publishYear: "2021",
           rating: 3.6,
           singlePrice: '45.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/yudaobaifenzhibaidenvhai.png"),
@@ -384,6 +395,7 @@ export default {
           publishYear: "2021",
           rating: 3.7,
           singlePrice: '48.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/quzhongguodexiaochuan.png"),
@@ -392,6 +404,7 @@ export default {
           publishYear: "2021",
           rating: 3.7,
           singlePrice: '52.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/shendehaiziquantiaowu.png"),
@@ -400,6 +413,7 @@ export default {
           publishYear: "2021",
           rating: 3.8,
           singlePrice: '48.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/wuwuwu.png"),
@@ -408,6 +422,7 @@ export default {
           publishYear: "2018",
           rating: 4.2,
           singlePrice: '52.00',
+          isbn:'',
         },
         {
           coverURL: getImageUrl("../assets/book-covers/yijiuqisanniandetanziqiu.png"),
@@ -416,6 +431,7 @@ export default {
           publishYear: "2018",
           rating: 3.6,
           singlePrice: '37.00',
+          isbn:'',
         },
       ]
     }
@@ -440,7 +456,36 @@ export default {
     onMouseOutExpandCollection() {
       this.showExpandCollection = false;
     },
+    pageTransfer(){
+      this.$router.push({name: `${this.pageTransferRoute}`, query: {userId: this.userId}});
+    },
+    toMyCart(){
+      this.$router.push({name: 'cart', params: {userId: this.userId}})
+    },
+    toDetail(index){
+      this.$router.push({name: 'detail', query: {isbn: `${this.searchResultBooks[index].isbn}`}})
+    },
+
+    onAddToCart(index){
+      fetch(`http://${ipAddress}/add-to-cart`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          isbn: this.searchResultBooks[index].isbn,
+        }),
+      })
+          .then(
+              ElMessage({
+                message: '加入购物车成功',
+                type: 'success',
+              })
+          )
+    },
+
     enterChange(){
+      /*
       fetch(`http://${ipAddress}/search-result`, {
         method: 'post',
         headers: {
@@ -453,12 +498,43 @@ export default {
           .then(x => x.json())
           .then(x => {
             this.searchResultBooks = x.searchResult;
+            this.keyword = this.userSearchInput;
           });
+      */
+      this.$router.push({name: 'search_result', query: {word: `${this.userSearchInput}`}});
       this.keyword = this.userSearchInput;
+      fetch(`http://${ipAddress}/search-result`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          keyword: this.keyword,
+        }),
+      })
+          .then(x => x.json())
+          .then(x => {
+            this.searchResultBooks = x.searchResult;
+          });
     },
 
   },
   mounted(){
+    fetch(`http://${ipAddress}/user`)
+        .then(x => x.json())
+        .then(x => {
+          this.userId = x.id;
+          if(this.userId === ''){
+            this.isLoggedIn = false;
+            this.pageTransferRoute = 'user_login';
+            this.buttonText = '立即登录';
+          }else{
+            this.isLoggedIn = true;
+            this.pageTransferRoute = 'info';
+            this.buttonText = '我的账号';
+          }
+        })
+
     console.log(this.$route.query.word);
     this.keyword = this.$route.query.word;
 
