@@ -4,7 +4,7 @@
 }
 
 .header-left-menu{
-    width: calc(100vw - 340px - 6vw - 20px);
+    width: calc(100vw - 300px - 6vw);
     height: 56px;
     display: inline-flex;
 }
@@ -24,7 +24,7 @@
 }
 
 .header-login-signup-container{
-    width: 170px;
+    width: 100px;
     padding-right: 8px;
     height: 56px;
     display: inline-flex;
@@ -48,19 +48,6 @@
     height: 32px;
     width: 90px;
     border-radius: 6px;
-}
-
-.sign-up-text{
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 54px;
-    margin: 0 0 0 14px;
-    padding: 0;
-    color: #65156C;
-}
-
-.sign-up-text:hover{
-    font-weight: 700;
 }
 
 .hover-expand-wrapper{

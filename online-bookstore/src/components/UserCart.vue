@@ -9,12 +9,6 @@
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
             全部分类
           </div>
-          <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCollection()" @mouseleave="onMouseOutExpandCollection">
-            图书榜单
-          </div>
-          <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCollection()" @mouseleave="onMouseOutExpandCollection">
-            折扣专区
-          </div>
         </div>
         <div class="header-searchbar-container">
           <el-input class="header-searchbar" v-model="userSearchInput" placeholder="搜索ISBN编号、书名或作者名" @keyup.enter.native="this.enterChange">
@@ -27,9 +21,8 @@
         <div class="header-login-signup-container">
           <el-button class="button-primary-general" id="login-button" style="margin-top: 12px">
             <i class="bi bi-person-fill" style="margin-right: 4px;"></i>
-            立即登录
+            我的账号
           </el-button>
-          <a class="sign-up-text">新用户注册</a>
         </div>
       </div>
 
@@ -46,7 +39,7 @@
                   </el-button>
                 </div>
                 <div class="hover-expand-left-box-bookcover">
-                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/loreolympus')">
+                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('../assets/book-covers/loreolympus.png')">
                 </div>
               </el-carousel-item>
               <el-carousel-item>
@@ -57,7 +50,7 @@
                   </el-button>
                 </div>
                 <div class="hover-expand-left-box-bookcover">
-                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('book-covers/diqitian')">
+                  <img style="width: 100%; border-radius: 10px 10px 0 0;" :src="getImage('../assets/book-covers/diqitian.png')">
                 </div>
               </el-carousel-item>
             </div>

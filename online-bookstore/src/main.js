@@ -20,6 +20,7 @@ import AdminControl from "@/components/AdminControl.vue";
 import AdminAddBook from "@/components/AdminAddBook.vue";
 import AdminSearchBook from "@/components/AdminSearchBook.vue";
 import BookDetail from "@/components/BookDetail.vue";
+import CheckOut from "@/components/CheckOut.vue";
 
 const myRouter = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,11 @@ const myRouter = createRouter({
             path: '/detail',
             name: 'detail',
             component: BookDetail,
+        },
+        {
+            path: '/check_out',
+            name:'check-out',
+            component: CheckOut,
         },
         {
             path: '/admin_control',
