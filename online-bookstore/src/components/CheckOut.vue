@@ -177,8 +177,8 @@
       <div class="order-title">
         订单详情
       </div>
-      <div class="order-wrapper" v-for="order in orderData" :key="order">
-        <div class="order-item" v-for="item in order.orderBooks" :key="item">
+      <div class="order-wrapper" v-for="item in orderData.orderBooks" :key="item">
+        <div class="order-item" v-for="item in orderData.orderBooks" :key="item">
           <div class="cover-box">
             <img :src="item.coverURL" class="book-cover"/>
           </div>
@@ -263,7 +263,7 @@ export default {
       selectedAddress: '',
       selectedCoupon: '',
       priceAfterCoupon: '',
-      orderData:[{
+      orderData:{
         id:'12343',
         orderBooks: [{
           coverURL: getImageUrl("../assets/book-covers/haibiandekafuka.png"),
@@ -281,7 +281,7 @@ export default {
           }],
         totalNum: '2',
         totalPrice: '174.00',
-      }],
+      },
       addresses:[{
         province: '北京市',
         city: '北京市',
@@ -393,12 +393,9 @@ export default {
     function getImage(url) {
       return getImageUrl(url);
     }
-    function getPNGImg(urlname){
-      return getPNG(urlname);
-    }
+
     return {
       getImage,
-      getPNGImg,
     }
   },
 }

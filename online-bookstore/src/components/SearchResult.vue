@@ -9,7 +9,7 @@
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
             全部分类
           </div>
-          <div class="hover-expand-menu-item" v-show="this.isLoggedIn">
+          <div class="hover-expand-menu-item" v-show="this.isLoggedIn" @click="this.$router.push('/cart')">
             我的购物车
           </div>
 
