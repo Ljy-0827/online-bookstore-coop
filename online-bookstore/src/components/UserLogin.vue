@@ -13,7 +13,7 @@
             <el-input class="form-input" v-model="userLoginInfo.email"></el-input>
           </el-form-item>
           <el-form-item label="密码" class="form-item">
-            <el-input class="form-input" v-model="userLoginInfo.password"></el-input>
+            <el-input class="form-input" v-model="userLoginInfo.password" type="password" show-password></el-input>
           </el-form-item>
           <el-form-item>
             <div class="forget-password">忘记密码？</div>
