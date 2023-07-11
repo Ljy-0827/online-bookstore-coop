@@ -228,8 +228,7 @@ export default {
       this.showExpandCollection = false;
     },
     enterChange(){
-      console.log(this.userSearch);
-      this.$router.push('/search_result');
+      this.$router.push({name: 'search_result', query: {word: `${this.userSearchInput}`}});
     },
     onLogOut(){
       fetch(`http://${ipAddress}/logout`)

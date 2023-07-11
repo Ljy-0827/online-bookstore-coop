@@ -110,6 +110,8 @@ export default {
       showExpandCategory: false,
       showExpandCollection: false,
       orderRadio: "全部订单",
+      simpleOrders:[],
+      /*
       simpleOrders:[{
         id: "2983714071",
         createDate: "2023年6月25日",
@@ -178,6 +180,8 @@ export default {
             }
           ]
         }],
+
+       */
     }
   },
   methods: {
