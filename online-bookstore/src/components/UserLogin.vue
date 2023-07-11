@@ -2,7 +2,7 @@
   <div class="main">
     <div class="left">
       <div style="width: 150px; height: 56px;">
-        <el-image :src="getImage('/setting-png/logo-icon')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+        <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
       </div>
       <div class="login-title">
         用户登录
@@ -24,7 +24,7 @@
         </el-form>
         <div class="no-account" style="display: inline-flex">
           <div class="no-account-text">新用户没有账号？</div>
-          <div class="no-account-signup">点我注册</div>
+          <div class="no-account-signup" @click="this.$router.push('/register')">点我注册</div>
         </div>
       </div>
 
