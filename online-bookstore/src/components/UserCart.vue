@@ -486,9 +486,8 @@ export default {
         body: JSON.stringify({
           submitBooks: this.selectedBooks,
         }),
-      })
-
-      this.$router.push('/check_out');
+      }).then(()=>this.$router.push('/check_out'))
+    
     },
 
     enterChange(){
