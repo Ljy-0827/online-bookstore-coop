@@ -66,7 +66,7 @@
           <div class="simple-order-bottom-box">
             <div class="simple-order-book-wrapper" v-for="bookItem in item.orderBooks" :key="bookItem">
               <div class="simple-order-book-cover-wrapper">
-                <img :src="bookItem.coverURL" class="simple-order-book-cover">
+                <img :src="getImage(String(bookItem.coverURL).substring(4))" class="simple-order-book-cover">
               </div>
               <div class="simple-order-book-info-left">
                 <div class="simple-order-book-title">
@@ -217,7 +217,7 @@ export default {
       return getImageUrl(url);
     }
     return {
-      getImage
+      getImage,
     }
   },
 
