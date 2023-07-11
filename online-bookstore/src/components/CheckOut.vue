@@ -249,6 +249,7 @@
 
 <script>
 import {getImageUrl, ipAddress} from "@/utils/utils.js";
+import {ElMessage} from "element-plus";
 
 export default {
   name: "CheckOut",
@@ -337,6 +338,19 @@ export default {
       this.showExpandCollection = false;
     },
     onSubmitPayment(){
+      if(this.selectedAddress === ''){
+        ElMessage({
+          message: '您还未选择收货信息',
+          type: 'error',
+        })
+        return;
+      }else if(this.payType === ''){
+        ElMessage({
+          message: '您还未选择支付方式',
+          type: 'error',
+        })
+        return;
+      }
       fetch(`http://${ipAddress}/pay_order`, {
         method: 'post',
         headers: {
