@@ -2,7 +2,7 @@
   <div class="main">
     <div class="left">
       <div style="width: 150px; height: 56px;">
-        <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+        <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;" @click="this.$router.push('/')"></el-image>
       </div>
       <div class="login-title">
         用户注册

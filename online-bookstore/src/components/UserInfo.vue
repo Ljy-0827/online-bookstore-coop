@@ -240,19 +240,16 @@ export default {
         }
       })
     },
-    firstFetch(){
-      fetch(`http://${ipAddress}/account/info`, {
-        method: 'get',
-      })
-          .then(x => x.json())
-          .then(x => {
-            this.userForm = x;
-          });
-    }
   },
   mounted() {
-    this.firstFetch();
-    this.gradeCalculate();
+    fetch(`http://${ipAddress}/account/info`, {
+      method: 'get',
+    })
+        .then(x => x.json())
+        .then(x => {
+          this.userForm = x;
+          this.gradeCalculate();
+        });
   }
 }
 </script>

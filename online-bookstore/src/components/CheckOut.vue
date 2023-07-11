@@ -3,7 +3,7 @@
     <el-affix>
       <div style="display: inline-flex; background-color: white">
         <div style="width: 150px; height: 56px;">
-          <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+          <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;" @click="this.$router.push('/')"></el-image>
         </div>
         <div class="header-left-menu">
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
@@ -178,7 +178,7 @@
         订单详情
       </div>
       <div class="order-wrapper" v-for="item in orderData.orderBooks" :key="item">
-        <div class="order-item" v-for="item in orderData.orderBooks" :key="item">
+        <div class="order-item" >
           <div class="cover-box">
             <img :src="item.coverURL" class="book-cover"/>
           </div>
@@ -351,9 +351,10 @@ export default {
       this.$router.push('/');
     },
     onCouponChange(){
-      this.priceAfterCoupon = this.orderData.totalPrice;
-      let firstTwoDigits = this.selectedCoupon.substring(0, 2); // 获取前两个字符
 
+      this.priceAfterCoupon = this.orderData.totalPrice;
+      let firstTwoDigits = String(this.selectedCoupon).substring(0, 2); // 获取前两个字符
+      console.log(firstTwoDigits);
       if (firstTwoDigits === "95") {
         this.priceAfterCoupon = (this.priceAfterCoupon * 0.95).toFixed(2);
       } else if(firstTwoDigits === "90") {
@@ -361,7 +362,10 @@ export default {
       }else if(firstTwoDigits === "85"){
         this.priceAfterCoupon = (this.priceAfterCoupon * 0.85).toFixed(2);
       }
-    }
+    },
+    enterChange(){
+      this.$router.push({name: 'search_result', query: {word: `${this.userSearchInput}`}});
+    },
   },
   mounted() {
     fetch(`http://${ipAddress}/get_current_order`, {

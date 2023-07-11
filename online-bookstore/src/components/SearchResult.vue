@@ -3,7 +3,7 @@
     <el-affix>
       <div style="display: inline-flex; background-color: white">
         <div style="width: 150px; height: 56px;">
-          <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+          <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;" @click="this.$router.push('/')"></el-image>
         </div>
         <div class="header-left-menu">
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
@@ -315,6 +315,8 @@ export default {
           children: [{id:13, label: '占位1'}]
         }
       ],
+      searchResultBooks:[],
+      /*
       searchResultBooks:[
         {
           coverURL: getImageUrl("../assets/book-covers/haibiandekafuka.png"),
@@ -434,6 +436,8 @@ export default {
           isbn:'',
         },
       ]
+
+       */
     }
   },
   methods: {
@@ -493,22 +497,6 @@ export default {
     },
 
     enterChange(){
-      /*
-      fetch(`http://${ipAddress}/search-result`, {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          keyword: this.userSearchInput,
-        }),
-      })
-          .then(x => x.json())
-          .then(x => {
-            this.searchResultBooks = x.searchResult;
-            this.keyword = this.userSearchInput;
-          });
-      */
       this.$router.push({name: 'search_result', query: {word: `${this.userSearchInput}`}});
       this.keyword = this.userSearchInput;
       fetch(`http://${ipAddress}/search-result`, {

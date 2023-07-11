@@ -3,7 +3,7 @@
     <el-affix>
       <div style="display: inline-flex; background-color: white">
         <div style="width: 150px; height: 56px;">
-          <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+          <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;" @click="this.$router.push('/')"></el-image>
         </div>
         <div class="header-left-menu">
           <div class="hover-expand-menu-item" @mouseenter="onMouseOverExpandCategory()" @mouseleave="onMouseOutExpandCategory" style="margin-left: 12px">
@@ -444,6 +444,8 @@ export default {
         this.transportFeeCondition = "不包含运费";
       }
 
+      console.log(this.cartBook[index].itemNum);
+
       fetch(`http://${ipAddress}/cart/num_change`, {
         method: 'post',
         headers: {
@@ -451,7 +453,7 @@ export default {
         },
         body: JSON.stringify({
           isbn: this.cartBook[index].isbn,
-          itemNum: this.cartBook[index].num,
+          itemNum: this.cartBook[index].itemNum,
         }),
       })
           .then(x => x.json())
@@ -491,8 +493,7 @@ export default {
     },
 
     enterChange(){
-      console.log(this.userSearchInput);
-      this.$router.push('/search_result');
+      this.$router.push({name: 'search_result', query: {word: `${this.userSearchInput}`}});
     },
 
   },
