@@ -91,7 +91,7 @@ export default {
     },
 
     submitLogin(){
-      fetch(`http://${ipAddress}/login`, {
+      fetch(`http://${ipAddress}/login/0`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',

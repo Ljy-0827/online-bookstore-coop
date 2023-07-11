@@ -350,7 +350,7 @@ export default {
       this.$router.push('/');
     },
     onCouponChange(){
-      this.priceAfterCoupon = this.orderData[0].totalPrice;
+      this.priceAfterCoupon = this.orderData.totalPrice;
       let firstTwoDigits = this.selectedCoupon.substring(0, 2); // 获取前两个字符
 
       if (firstTwoDigits === "95") {
@@ -369,22 +369,24 @@ export default {
         .then(x => x.json())
         .then(x => {
           this.orderData = x.order;
+        }).then(()=>{
+            fetch(`http://${ipAddress}/address/get`, {
+              method: 'get',
+            })
+                .then(x => x.json())
+                .then(x => {
+                  this.addresses = x.addresses;
+                });
+            fetch(`http://${ipAddress}/get_coupon`, {
+              method: 'get',
+            })
+                .then(x => x.json())
+                .then(x => {
+                  this.coupons = x.coupons;
+                });
+            this.priceAfterCoupon = this.orderData.totalPrice;
+
         });
-    fetch(`http://${ipAddress}/address/get`, {
-      method: 'get',
-    })
-        .then(x => x.json())
-        .then(x => {
-          this.addresses = x.addresses;
-        });
-    fetch(`http://${ipAddress}/get_coupon`, {
-      method: 'get',
-    })
-        .then(x => x.json())
-        .then(x => {
-          this.coupons = x.coupons;
-        });
-    this.priceAfterCoupon = this.orderData[0].totalPrice;
   },
   setup(){
     function getImage(url) {
