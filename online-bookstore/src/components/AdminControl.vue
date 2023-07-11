@@ -4,7 +4,7 @@
       <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
     </div>
     <div class="logout-button-wrapper">
-      <el-button class="logout-button">登出</el-button>
+      <el-button class="logout-button" @click="onLogOut">登出</el-button>
     </div>
 
 
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import {getImageUrl} from "@/utils/utils.js";
+import {getImageUrl, ipAddress} from "@/utils/utils.js";
 
 export default {
   name: "AdminControl",
@@ -35,6 +35,12 @@ export default {
     return{
 
     }
+  },
+  methods:{
+    onLogOut(){
+      fetch(`http://${ipAddress}/logout`)
+          .then(this.$router.push('/'));
+    },
   },
   setup(){
     function getImage(url) {
