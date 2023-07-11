@@ -27,7 +27,7 @@
             <i class="bi bi-person-fill" style="margin-right: 4px;"></i>
             {{this.buttonText}}
           </el-button>
-          <a class="sign-up-text" v-show="!this.isLoggedIn">新用户注册</a>
+          <a class="sign-up-text" v-show="!this.isLoggedIn" @click="this.$router.push('/register')">新用户注册</a>
         </div>
       </div>
 
