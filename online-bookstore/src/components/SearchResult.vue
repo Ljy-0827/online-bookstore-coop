@@ -194,7 +194,7 @@
       <div class="book-container" style="background-color: transparent">
         <div class="book-item-container" v-for="(item, index) in searchResultBooks" :key="index">
           <div class="book-item-cover-wrapper" @click="toDetail(index)">
-            <img class="book-item-cover-pic" :src="item.coverURL">
+            <img class="book-item-cover-pic" :src='item.coverURL'>
           </div>
           <div class="book-item-title" @click="toDetail(index)">
             {{item.title}}

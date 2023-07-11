@@ -2,7 +2,7 @@
   <div class="main">
     <div class="left">
       <div style="width: 150px; height: 56px;">
-        <el-image :src="getImage('/setting-png/logo-icon')" style="margin-top: 16px; margin-left: 20px;"></el-image>
+        <el-image :src="getImage('../assets/setting-png/logo-icon.png')" style="margin-top: 16px; margin-left: 20px;"></el-image>
       </div>
       <div class="login-title">
         用户登录
@@ -40,7 +40,7 @@
 
     </div>
     <div class="right">
-      <img :src="getImage('/setting-png/login-background')" class="login-background-img"/>
+      <img :src="getImage('../assets/setting-png/login-background.png')" class="login-background-img"/>
     </div>
   </div>
 </template>

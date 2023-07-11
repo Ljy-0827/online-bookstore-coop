@@ -22,6 +22,7 @@ import AdminSearchBook from "@/components/AdminSearchBook.vue";
 import BookDetail from "@/components/BookDetail.vue";
 import CheckOut from "@/components/CheckOut.vue";
 import AdminLogin from "@/components/AdminLogin.vue";
+import UserSignUp from "@/components/UserSignUp.vue";
 
 const myRouter = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,6 +50,11 @@ const myRouter = createRouter({
             path: '/login/0',
             name: 'user_login',
             component: UserLogin,
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: UserSignUp,
         },
         {
             path: '/login/1',

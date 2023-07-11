@@ -244,6 +244,7 @@
       <el-button @click="onSubmitPayment" class="pay-button">确认支付</el-button>
     </div>
   </el-main>
+
 </template>
 
 <script>
@@ -392,8 +393,12 @@ export default {
     function getImage(url) {
       return getImageUrl(url);
     }
+    function getPNGImg(urlname){
+      return getPNG(urlname);
+    }
     return {
-      getImage
+      getImage,
+      getPNGImg,
     }
   },
 }
