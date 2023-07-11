@@ -653,10 +653,10 @@ export default {
 
        */
 
-      this.$router.push({name: 'search_result', query: {word: `${this.userSearch}`}});
+      this.$router.push({name: 'search_result', query: {word: `${this.userSearch}`, userId: `${this.userId}`}});
     },
     pageTransfer(){
-      this.$router.push({name: `${this.pageTransferRoute}`, params: {userId: this.userId}});
+      this.$router.push({name: `${this.pageTransferRoute}`, query: {userId: this.userId}});
     },
     toMyCart(){
       this.$router.push({name: 'cart', params: {userId: this.userId}})

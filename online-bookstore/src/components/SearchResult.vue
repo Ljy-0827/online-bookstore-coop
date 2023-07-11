@@ -460,28 +460,36 @@ export default {
       this.$router.push({name: `${this.pageTransferRoute}`, query: {userId: this.userId}});
     },
     toMyCart(){
-      this.$router.push({name: 'cart', params: {userId: this.userId}})
+      this.$router.push({name: 'cart', query: {userId: this.userId}})
     },
     toDetail(index){
       this.$router.push({name: 'detail', query: {isbn: `${this.searchResultBooks[index].isbn}`}})
     },
 
     onAddToCart(index){
-      fetch(`http://${ipAddress}/add-to-cart`, {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          isbn: this.searchResultBooks[index].isbn,
-        }),
-      })
-          .then(
-              ElMessage({
-                message: '加入购物车成功',
-                type: 'success',
-              })
-          )
+      if(this.userId === ''){
+        ElMessage({
+          message: '您尚未登录',
+          type: 'error',
+        })
+      }else{
+        fetch(`http://${ipAddress}/add-to-cart`, {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            isbn: this.searchResultBooks[index].isbn,
+          }),
+        })
+            .then(
+                ElMessage({
+                  message: '加入购物车成功',
+                  type: 'success',
+                })
+            )
+      }
+
     },
 
     enterChange(){
@@ -535,7 +543,7 @@ export default {
           }
         })
 
-    console.log(this.$route.query.word);
+
     this.keyword = this.$route.query.word;
 
     fetch(`http://${ipAddress}/search-result`, {
